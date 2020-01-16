@@ -12,8 +12,6 @@ import './realtor/gallery/singleApratment.css';
 import SingleApartment from "./realtor/gallery/singleApartment"
 import PageGallery from "./realtor/pages/page-gallery"
 import PageHome from "./realtor/pages/page-home";
-import PageSell from "./realtor/pages/page-for-sale";
-import PageRent from "./realtor/pages/page-for-rent";
 import Login from "./realtor/login/login";
 import Form from './realtor/form/form'
 
@@ -33,7 +31,6 @@ class App extends React.Component {
         })
     };
     handleApartmentSuccess = (data) => {
-        // console.log("appp", data)
         this.setState({
             apartmentArray: data
         });
@@ -45,19 +42,13 @@ class App extends React.Component {
                 <div id={"app"}>
                     <div>
                         <Switch>
-                            {/* <Route path="/sell">
-                                <PageSell apartmentArray ={this.state.apartmentArray}/>
-                            </Route>
-                            <Route path="/rent">
-                                <PageRent apartmentArray ={this.state.apartmentArray}/>
-                            </Route> */}
+                            <Route path={"/apartment/:id"} component={SingleApartment} />
+                            <Route path={"/form"} component={Form}/>
+                            <Route path={"/login"} component={Login}/>
+
                             <Route path="/apartments">
                                 <PageGallery apartmentArray={this.state.apartmentArray}/>
                             </Route>
-                            <Route path={"/apartment/:id"} component={SingleApartment} />
-                            <Route path={"/form"} component={Form}/>
-
-                            <Route path={"/login"} component={Login}/>
                             <Route path="/">
                                 <PageHome apartmentArray={this.state.apartmentArray}/>
                             </Route>

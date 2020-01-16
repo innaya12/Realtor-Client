@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {getApartmentByID, getImagesById} from "../serverData/serverData";
+import {getApartmentByID, getImagesByApartmentId} from "../serverData/serverData";
 import Footer from "../footer/footer";
 import Carousel from "../forms/carousel";
 import RegForm from "../forms/regForm";
@@ -19,29 +19,28 @@ class SingleApartment extends React.Component {
     componentDidMount() {
         let apartmentId = '' + this.props.match.params.id
         getApartmentByID(this.handleApartmentSuccess, apartmentId)
-        getImagesById(this.handleimagesSuccess, apartmentId)
+        getImagesByApartmentId(this.handleimagesSuccess, apartmentId)
     };
     handleimagesSuccess = (data) =>{
-        console.log("dataimages", data)
+        // console.log("dataimages1", data[0].url)
+        // console.log("dataimages2", data[1])
+        // console.log("dataimages4", data[2])
         this.setState({ 
             images: data
-        }, console.log("dataimages1",this.state.images));
+        });
     }
     handleApartmentSuccess = (data) => {
-        console.log("data", data)
         this.setState({ 
             loading: false,
             apartment: data
-        }, console.log("1",this.state.apartment));
+        });
     };
 
     render() {
-        console.log("id",this.props.match.params.id)
-        
-        const {apartment} = this.state;
+        const {apartment, images} = this.state;
         const {onSubmit, handleChange} = this.props;
-        const propertyType = apartment.for_sale ? "for Sale" : apartment.for_rent ? "for Rent" : "for Visit";
-        console.log("apartment",apartment)
+        // const propertyType = apartment.for_sale ? "for Sale" : apartment.for_rent ? "for Rent" : "for Visit";
+        console.log("images111",images)
         // console.log("apartmentArray", this.state.apartmentArray.apartment.id)
 
         return (            
@@ -120,8 +119,10 @@ class SingleApartment extends React.Component {
                         <div className={"container"}>
                             <p className={"wrap-text-div"}>Presented by:</p>
                             <p className={"wrap-text-div"}> CHIP JULIEN with Donald Julien & Associates, Inc. </p>
-                            <Carousel apartment={apartment}
-                                      propertyType={propertyType}/>
+                            {images.length !== 0 &&
+                                <Carousel apartment={apartment}
+                                        images = {images}/>
+                            }
                             <RegForm type={1}/>
                             <div className={"under-image"}>
                                 <p><a href={"/"}>Vaterans: Check Eligibility for a $0 Down VA Loan</a> |
@@ -198,8 +199,11 @@ class SingleApartment extends React.Component {
                             <RegForm type={2}/>
                         </div>
                         <div>
+                        {images.length !== 0 &&
                             <SecondCarousel apartment={apartment}
-                                      propertyType={propertyType}/>
+                                            images = {images}/>
+
+                        }
                         </div>
                     </main>
                     }

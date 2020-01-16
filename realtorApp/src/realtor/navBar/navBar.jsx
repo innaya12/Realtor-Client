@@ -1,6 +1,6 @@
 import React from 'react';
 import BuildNavbar from "./buildNavbar";
-import {navBar} from "../data-base";
+import {navBar} from "../fake-data-base";
 import {Link} from "react-router-dom";
 import  './nav-bar.css';
 
