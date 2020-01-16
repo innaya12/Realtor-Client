@@ -6,19 +6,17 @@ const getApartment = (handleSuccess) => {
 }
 
 const getApartmentByID = (handleSuccess, apartmentId) => {
-    console.log("apartmentId",apartmentId)
     axios.get(`http://localhost:8000/apartments/${apartmentId}`)
     .then(success => {
-        console.log("success", success)
         handleSuccess(success.data[0])
     }).catch(error => console.log(error))
 } 
-const getImagesById = (handleSuccess, apartmentId) => {
-    console.log("images",imagesId)
-    axios.get(`http://localhost:8000/apartmentIdImages/${apartmentId}`)
+
+
+const getImagesByApartmentId = (handleSuccess, apartmentId) => {
+    axios.get(`http://localhost:8000/images/${apartmentId}`)
     .then(success => {
-        console.log("successimage", success)
-        handleSuccess(success)
+        handleSuccess(success.data)
     }).catch(error => console.log(error))
 } 
 
@@ -42,4 +40,4 @@ const getImagesById = (handleSuccess, apartmentId) => {
 //         }
 //     ).catch(error => console.log(error))
 // };
-export {getApartmentByID, getApartment, getImagesById};
+export {getApartmentByID, getApartment, getImagesByApartmentId};
