@@ -1,0 +1,400 @@
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.one {
+    display: inline-flex;
+}
+
+#paragraph, .paragraph {
+    font-size: 14px;
+}
+
+.Relevant-button {
+    font-size: 14px;
+    background-color: white;
+    color: blue;
+    text-decoration: underline;
+    border: none;
+}
+
+.Relevant-button:hover {
+    font-size: 14px;
+    background-color: white;
+    color: blue;
+    text-decoration: underline;
+    border-style: none;
+}
+
+.wrap-text-div a {
+    text-decoration: none;
+    color: blue;
+}
+
+.inner-img-div {
+    width: 100%;
+    height: 270px;
+    position: relative;
+}
+
+.hereIsTheImg {
+    background-size: cover;
+    height: 100%;
+}
+
+.text-div {
+    font-size: 14px;
+    padding: 12px 16px 16px;
+    height: 30%;
+    text-align: left;
+}
+
+.img-div {
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.inner-div:hover {
+    box-shadow: 1.5px 1.5px 2px 2px lightgray;
+    cursor: pointer;
+}
+
+.inner-div p {
+    text-align: left;
+    font-size: 9px;
+}
+
+.green {
+    background-color: green;
+}
+
+.title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: white;
+    padding: 6px;
+}
+
+.sale {
+    color: white;
+    position: absolute;
+    left: 10px;
+    bottom: 30px;
+    font-size: 12px;
+}
+
+.img-div h5 {
+    color: white;
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+}
+
+.bottom-title {
+    padding: 5px;
+    font-size: 13px;
+}
+
+.inner-img-div .heart {
+    position: absolute;
+    top: 1px;
+    right: 9px;
+    color: hotpink;
+    font-size: 35px;
+}
+
+.text-div p {
+    font-size: 14px;
+}
+
+.two {
+    position: absolute;
+    right: 100px;
+    top: 0;
+    z-index: 2000;
+}
+
+#myDIV .map-container-5 {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    z-index: 1;
+    height: 0;
+}
+
+.map-container-5 iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+}
+
+main {
+    padding: 10px 16px;
+}
+
+
+.filterButton {
+    background-color: red;
+    color: white;
+    border: lightgray 1px solid;
+    margin-left: 10px;
+    font-size: 13px;
+    padding: 6px;
+}
+
+.filterButton:hover {
+    background-color: lightgray;
+}
+.div-wrapper #saleRent {
+    padding: 7px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: lightgray 1px solid;
+}
+.div-wrapper .mini-div-wrapper .radioButton {
+    width: 50px;
+    margin: 0;
+}
+
+
+
+.div-wrapper .mini-div-wrapper  select {
+    margin: 0 8px;
+    height: fit-content;
+}
+
+main #filter-gallery #address {
+    width: 14%;
+    font-weight: normal;
+    padding: 6px;
+    margin-left: 10px;
+    border: lightgray 1px solid;
+}
+
+#resetButton {
+    border: lightgray 1px solid;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.navbar-brand {
+    float: right;
+}
+
+.padding {
+    padding: 0 16px;
+}
+
+form input {
+    border: 1px gray solid;
+    margin-left: 15px;
+    width:  100%;
+    padding: 8px;
+    color: #333;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+main button {
+    display: inline-block;
+    color: white;
+    padding: 0 40px 0 24px;
+    border-radius: 0 4px 4px 0;
+    font-size: 18px;
+    background-color: rgb(255, 0, 0);
+    border-style: none;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: darkred;
+}
+
+.main .just-a-button {
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    padding: 6px 8px;
+}
+
+.main .just-a-button:hover {
+    color: red;
+    border-color: #999;
+    background-color: #f7f7f7;
+}
+
+
+#button-icon-search {
+    font-weight: bold;
+    width: 20%;
+    padding: 9px;
+}
+
+.red-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar{
+    color: black;
+    margin: 0;
+    list-style: none;
+}
+
+.div-wrapper {
+    position: relative;
+    padding-top: 6px;
+    padding-bottom: 10px;
+}
+
+.padding div {
+    padding-top: 5px;
+}
+
+.new-york{
+    position: relative;
+    z-index: 1;
+}
+
+main .new-york .div-wrapper .dropdown-menu{
+    padding: 0;
+}
+
+.mini-div-wrapper {
+    font-size: 16px;
+    background-color: white;
+    padding: 8px 10px;
+    text-align: left;
+    color: #999;
+}
+
+.price li:hover {
+    cursor: pointer;
+    color: red;
+}
+
+
+.checkbox {
+    width: 50%;
+    height: 55px;
+    margin: 8px 0;
+    padding: 0 10px;
+}
+
+.checkbox .fas{
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+}
+
+.img-row {
+    flex-wrap: nowrap;
+}
+
+.img-row .checkbox:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.beds-div , .baths-div {
+    flex-wrap: nowrap;
+}
+
+.beds-div lable ,.baths-div lable {
+    border: transparent 1px solid;
+    padding: 10px;
+    margin: 6px;
+    font-size: 16px;
+    color: gray;
+}
+
+.beds-div lable:hover{
+    border-radius: 50%;
+    color: red;
+    cursor: pointer;
+    border: red 1px solid;
+}
+
+#special, #special2 {
+    border-radius: 50%;
+    border: red 1px solid;
+    color: red;
+}
+
+.baths-div lable:hover{
+    border: red 1px solid;
+    border-radius: 50%;
+    color: red;
+    cursor: pointer;
+}
+
+.listing-status {
+    font-size: 14px;
+    padding: 5px;
+    width: 280px;
+}
+
+.listing-status lable {
+    padding: 5px 0 5px 5px;
+}
+
+main .nav-bar{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.main .nav-bar .dropdown-toggle {
+    margin-right: 10px;
+    font-size: 14px;
+    padding: 7px 21px 7px 4px;
+    background-color: white;
+    color: black;
+    border: lightgray 1px solid;
+    border-radius: 5px;
+}
+
+.main .nav-bar .dropdown-toggle:hover {
+    background-color: #f7f7f7;
+
+}
+
+.div-wrapper {
+    position: relative;
+    padding-top: 6px;
+    padding-bottom: 10px;
+}
+
+.padding div {
+    padding-top: 5px;
+}
+
+.new-york{
+    position: relative;
+    z-index: 1;
+}
+
+.price li:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.icons-div {
+    width: 100%;
+}
+
+

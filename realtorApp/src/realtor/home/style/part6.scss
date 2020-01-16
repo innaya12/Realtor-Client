@@ -1,0 +1,101 @@
+.part6{
+	height: 500px;
+	display: flex;
+	align-items: center;
+	position: relative; 
+}
+
+.img-one {
+	background-image: url('../images/funny.jpg');
+}
+
+.img-settings{
+	position: relative;
+	object-position: center;
+	background-size: cover;
+	width: 50%;
+	height: 100%;
+}
+
+.text-helf-page{
+	position: relative;
+    z-index: 10;
+	width: 50%;
+	padding: 0 16px;
+}
+
+@media (max-width: 767px) {
+	.text-helf-page{
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+		position: absolute;
+		color: white;
+    	text-align: left;
+    	padding: 0 50px;
+	}
+}
+
+.part6 h2 {
+	font-size: 30px;	
+}
+
+.part6 p{
+	font-size: 18px;
+	margin: 10px 0px 20px;
+}
+
+.pre-approved-button{
+	white-space: nowrap;
+	padding: 10px 24px;
+	background-color: #D92228;
+	font-size: 14px;
+	color: #FFFFFF;
+	border-radius: 20px;
+	border: none;
+}
+
+.part6 button:hover {
+	cursor: pointer;
+	background-color: darkred;
+}
+
+.part6 .img-two {
+	background-image: url('../images/funny2.jpg');
+}
+
+.part6 form {
+	width: 400px;
+	height: 35px;
+	display: flex;
+	border-radius: 10px;
+	align-items: stretch;
+}
+
+.part6 .input {
+	padding: 0px 24px;
+	border: 1px gray solid;
+	border-radius: 5px 0 0 5px;
+	font-size: 13px;
+	width: 70%;
+}
+
+.part6 .button {
+	color: white;
+	padding: 14px;
+	width: 30%;
+	border-radius: 0 5px 5px 0;
+	font-size: 17px;
+	background-color: rgb(255, 0, 0);
+	border-style: none;
+}
+
+.part6 button:hover {
+	cursor: pointer;
+	background-color: darkred;
+}
+
+#button-icon-search {
+	font-weight: bold;
+	width: 14%;
+ 	font-size: 22px;
+    padding: 12px 15px;	
+}

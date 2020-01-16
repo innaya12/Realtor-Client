@@ -1,0 +1,22 @@
+.part8-wrap {
+  text-align: center;
+  border-bottom: 1px solid gray;
+  padding: 20px 0; }
+
+.bottom1 ul {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 2px; }
+
+.bottom1 ul li a {
+  font-weight: normal;
+  font-size: 12px;
+  text-decoration: none;
+  color: black; }
+
+.bottom1 ul li {
+  text-align: left;
+  padding-top: 2px;
+  font-weight: normal;
+  list-style: none;
+  font-size: 12px; }
