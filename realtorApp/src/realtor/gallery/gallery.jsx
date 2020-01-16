@@ -1,5 +1,5 @@
 import React from 'react';
-import BuildSquare from "./buildSquare";
+import BuildApartment from "./buildApartment";
 import Form from "../forms/form";
 
 class Gallery extends React.Component {
@@ -72,7 +72,7 @@ class Gallery extends React.Component {
                       handleChange={this.handleChange}
                 />
                 {this.state.apartmentArray.map((apartment, i) =>
-                    <BuildSquare {...apartment} key={i}/>
+                    <BuildApartment {...apartment} key={i}/>
                 )}
             </div>
         );
