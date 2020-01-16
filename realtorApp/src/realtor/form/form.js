@@ -6,7 +6,7 @@ class Form extends React.Component {
         return (
             <div className={"container-fluid"}>
                 <div className={"row "}>
-                    <div className={"col-6"}>
+                    <div className={"login col-6"}>
                         <form>
                             <div className={"text"}>
                                 <h5><b>Student Details</b></h5>

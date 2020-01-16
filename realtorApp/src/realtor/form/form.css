@@ -1,12 +1,10 @@
-/* form{
+.login form{
     background-color: #00b386	;
     padding: 40px;
     color: #004d39;
     display: grid;
 }
 
-
-
-.text{
+.login.text{
     text-align: center;
-} */
+}

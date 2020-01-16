@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {getApartmentByID, getImagesByApartmentId} from "../serverData/serverData";
+import {getApartmentByID} from "../getData/getApartments";
+import {getImagesByApartmentId} from "../getData/getImages";
 import Footer from "../footer/footer";
 import Carousel from "../forms/carousel";
 import RegForm from "../forms/regForm";
@@ -22,9 +23,6 @@ class SingleApartment extends React.Component {
         getImagesByApartmentId(this.handleimagesSuccess, apartmentId)
     };
     handleimagesSuccess = (data) =>{
-        // console.log("dataimages1", data[0].url)
-        // console.log("dataimages2", data[1])
-        // console.log("dataimages4", data[2])
         this.setState({ 
             images: data
         });
@@ -40,8 +38,6 @@ class SingleApartment extends React.Component {
         const {apartment, images} = this.state;
         const {onSubmit, handleChange} = this.props;
         // const propertyType = apartment.for_sale ? "for Sale" : apartment.for_rent ? "for Rent" : "for Visit";
-        console.log("images111",images)
-        // console.log("apartmentArray", this.state.apartmentArray.apartment.id)
 
         return (            
             <div>

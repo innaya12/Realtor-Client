@@ -20,24 +20,24 @@ class RegForm extends React.Component{
                 <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Sign Up</h1>
 
                 <div className={"col-sm-12"} style={inputWrapper}>
-                    <input type={"text"} className={"form-control"} id={"firstname"}
+                    <input type={"text"} className={"form-control"} 
                            placeholder={"Your Name"}
                            name={"firstname"}
                            style={inputStyle}/>
                 </div>
                 <div className={"col-sm-12"} style={inputWrapper}>
-                    <input type={"text"} className={"form-control"} id={"mobileno"} placeholder={"Email"}
-                           name={"mobileno"}
-                           style={inputStyle}/>
-                </div>
-                <div className={"col-sm-12"} style={inputWrapper}>
-                    <input type={"text"} className={"form-control"} id={"mobileno"} placeholder={"Phone"}
-                           name={"mobileno"}
-                           style={inputStyle}/>
-                </div>
-                <div className={"col-sm-12"} style={inputWrapper}>
-                    <input type={"email"} className={"form-control"} id={"email"} placeholder={"Email"}
+                    <input type={"email"} className={"form-control"} placeholder={"Email"}
                            name={"email"} style={inputStyle}/>
+                </div>
+                <div className={"col-sm-12"} style={inputWrapper}>
+                    <input type={"text"} className={"form-control"} placeholder={"Phone"}
+                           name={"mobileno"}
+                           style={inputStyle}/>
+                </div>
+                <div className={"col-sm-12"} style={inputWrapper}>
+                    <input type={"text"} className={"form-control"} placeholder={"password"}
+                           name={"mobileno"}
+                           style={inputStyle}/>
                 </div>
                 <button className={"col-md-4 col-md-offset-4 btn"}
                         style={{
