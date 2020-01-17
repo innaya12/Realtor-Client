@@ -1,5 +1,5 @@
 import React from "react";
-import {getUsersById} from '../getData/getUsers'
+import {getUsersById} from '../../data/getData/getUsers'
 
 class Login extends React.Component{
     constructor(props) {
