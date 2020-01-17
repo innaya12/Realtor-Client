@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import buildApartment from "../gallery/buildApartment";
+import BuildApartment from "../gallery/buildApartment";
 
 class Home extends React.Component {
     constructor(props) {
@@ -79,7 +79,7 @@ class Home extends React.Component {
                     <div className={"row justify-content-between wrap-img-div"}>
                         {this.state.randomArray && this.state.randomArray.length > 0 &&
                         this.state.randomArray.map((apartment, i) =>
-                            <buildApartment  {...apartment} key={i}/>)
+                            <BuildApartment  {...apartment} key={i}/>)
                         }
                     </div>
                 </div>

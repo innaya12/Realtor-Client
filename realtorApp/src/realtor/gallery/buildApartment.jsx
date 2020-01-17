@@ -10,7 +10,7 @@ class BuildApartment extends React.Component {
     }
 
     render() {
-        console.log(`url('${"http://localhost:8000/" + this.props.main_image}')`)
+        // console.log(`url('${"http://localhost:8000/" + this.props.main_image}')`)
         const { property_type, description, sale_status, price, number_of_bath, number_of_room, address, sqft, id } = this.props;
         const style = {backgroundImage: this.state.backgroundImage};
         const propertyType = sale_status ? "sale" : sale_status ? "rent" : "for rent and for sale";
