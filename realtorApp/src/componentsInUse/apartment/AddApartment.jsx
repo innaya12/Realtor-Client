@@ -1,19 +1,19 @@
 import React from 'react';
-import {addUserToDB} from '../../data/addData/addUsers'
+import {addApartmentToDB} from '../../data/addData/addApartment'
 
-class Signup extends React.Component {
+class AddApartment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: '', 
-            firstName : '',
-            lastName: '',
-            email: '', 
-            password: '',
-            phone: ''
+            apartment: '',
+            price : '',
+            number_of_room: '',
+            number_of_bath: '', 
+            sqft: '',
+            description: '',
+            main_image: 'images/apartment/apartment_5.jpg'
         };
     }
-    
     handleChange = (e) => {
         e.preventDefault();
         let {name, value} = e.target;
@@ -28,18 +28,19 @@ class Signup extends React.Component {
     };
     
     callme(){
-        const {firstName, lastName,email, password, phone} = this.state
-        addUserToDB(this.handleUsersSuccess, firstName, lastName,email, password, phone)
+        const {address, price, number_of_room, number_of_bath, sqft, description, main_image
+        } = this.state
+        addApartmentToDB(this.handleApartmentSuccess, address, price, number_of_room, number_of_bath, sqft, description, main_image)
     };
     
-    handleUsersSuccess = (data) =>{
+    handleApartmentSuccess = (data) =>{
+        console.log("now here")
         this.setState({ 
-            user: data
+            apartment: data
         });
     }
 
     render() {
-        console.log("user", this.state.user )
         const type = 2; // 1 = top forms; 2 = bottom
         const mainStyle = type === 1 ?
             {width:"260px", height:"310px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .4)", top: "160px", left:"510px"} :
@@ -54,35 +55,39 @@ class Signup extends React.Component {
             {borderRadius: "0px", width: "90%", fontSize: "14px"};
 
         return(
-
             <main className={"part-2 paddingPage singlePage"} style={{position: "relative"}}>
             <div className={"container"}>
                     <div style={mainStyle} className={"d-3 d-lg-inline col-md-offset-4 regForm"}>
-                        <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Sign Up</h1>
+                        <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Add Apartment</h1>
                         <div className={"col-sm-12"} style={inputWrapper}>
                             <input type={"text"} className={"form-control"} 
-                                placeholder={"First Name"}
-                                name={"firstName"}
+                                placeholder={"address"}
+                                name={"address"}
                                 style={inputStyle} onChange={this.handleChange}/>
                         </div>
                         <div className={"col-sm-12"} style={inputWrapper}>
                             <input type={"text"} className={"form-control"} 
-                                placeholder={"Last Name"}
-                                name={"lastName"}
+                                placeholder={"price"}
+                                name={"price"}
                                 style={inputStyle} onChange={this.handleChange}/>
                         </div>
                         <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"email"} className={"form-control"} placeholder={"Email"}
-                                name={"email"} style={inputStyle} onChange={this.handleChange}/>
+                            <input type={"text"} className={"form-control"} placeholder={"Number of rooms"}
+                                name={"number_of_room"} style={inputStyle} onChange={this.handleChange}/>
                         </div>
                         <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"Phone"}
-                                name={"phone"}
+                            <input type={"text"} className={"form-control"} placeholder={"Number of baths"}
+                                name={"number_of_bath"}
                                 style={inputStyle} onChange={this.handleChange}/>
                         </div>
                         <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"password"}
-                                name={"password"}
+                            <input type={"text"} className={"form-control"} placeholder={"Sqft"}
+                                name={"sqft"}
+                                style={inputStyle} onChange={this.handleChange}/>
+                        </div>
+                        <div className={"col-sm-12"} style={inputWrapper}>
+                            <input type={"text"} className={"form-control"} placeholder={"Description"}
+                                name={"description"}
                                 style={inputStyle} onChange={this.handleChange}/>
                         </div>
                         <button className={"col-md-4 col-md-offset-4 btn"}
@@ -101,7 +106,7 @@ class Signup extends React.Component {
     }
 }
 
-export default Signup;
+export default AddApartment;
 
 
 

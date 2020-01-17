@@ -3,20 +3,20 @@ import {
     BrowserRouter as Router,
     Switch,
     Route
-} from "react-router-dom";
-import './realtor/gallery/mystyle.css';
+} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './realtor/home/style/home-page.css';
-import './realtor/gallery/singleApratment.css';
-import SingleApartment from "./realtor/gallery/singleApartment"
-import PageGallery from "./realtor/pages/page-gallery"
-import PageHome from "./realtor/pages/page-home";
-import Login from './realtor/login/loginForm';
-import Signup from './realtor/login/signup'
-import Form from './realtor/form/form'
-
-import {getApartment} from "./realtor/getData/getApartments"; //
+import './componentsInUse/gallery/mystyle.css';
+import './componentsInUse/home/style/home-page.css';
+import './componentsInUse/gallery/singleApratment.css';
+import Form from './componentsInUse/form/form'
+import Login from './componentsInUse/login/loginForm';
+import PageHome from "./componentsInUse/pages/page-home";
+import PageGallery from "./componentsInUse/pages/page-gallery"
+import Signup from './componentsInUse/login/signup'
+import SingleApartment from './componentsInUse/gallery/singleApartment'
+import AddApartment from './componentsInUse/apartment/AddApartment'
+import {getApartment} from "./data/getData/getApartments"; //
 
 class App extends React.Component {
     constructor(props) {
@@ -45,11 +45,9 @@ class App extends React.Component {
                         <Switch>
                             <Route path={"/apartment/:id"} component={SingleApartment} />
                             <Route path={"/form"} component={Form}/>
-                            <Route path={"/login"} component={Login}/>
-
-                            {/* <Route path={"/login"} component={Login}/> */}
+                            <Route path={"/addapartment"} component={AddApartment}/>
+                            <Route path={"/login"} component={Login}/>  
                             <Route path={"/signup"} component={Signup}/>
-
                             <Route path="/apartments">
                                 <PageGallery apartmentArray={this.state.apartmentArray}/>
                             </Route>
