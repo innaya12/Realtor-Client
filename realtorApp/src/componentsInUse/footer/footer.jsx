@@ -7,11 +7,17 @@ class Footer extends React.Component {
                 <div className={"end1-wrap"}>
                     <div className={"container"}>
                         <div className={"row"}>
-                            <div className={"col-12 col-md-6"}>
-                                <a href={"/"}><img alt={""} src={require("./../home/images/icons/all.PNG")}/></a>
+                            <div className={"col-12 col-md-6"} style={{paddingTop: "18px"}}>
+                                <a href={"https://www.facebook.com/realtor.com"} target="_blank"><img alt={"facebook"} src={require("./../home/images/icons/facebook_icon.png")}/></a>
+                                <a href={"https://twitter.com/REALTORdotcom"} target="_blank"><img alt={"twitter"} src={require("./../home/images/icons/twitter_icon.png")}/></a>
+                                <a href={"https://www.linkedin.com/company/realtor-com/"} target="_blank"><img alt={"linkdin"} src={require("./../home/images/icons/linkdin_icon.png")}/></a>
+                                <a href={"https://www.instagram.com/realtordotcom/?hl=en"} target="_blank"><img alt={"instagram"} src={require("./../home/images/icons/instagram_icon.png")}/></a>
+                                <a href={"https://www.pinterest.com/realtordotcom/"} target="_blank"><img alt={"pinterest"} src={require("./../home/images/icons/pinterest_icon.png")}/></a>
+                                <a href={"https://www.youtube.com/user/RealtorDotCom"} target="_blank"><img alt={"youtube"} src={require("./../home/images/icons/youtube_icon.png")}/></a>
                             </div>
-                            <div className={"col-12 col-md-6"}>
-                                <a href={"/"}><img alt={""} src={require("./../home/images/icons/all2.PNG")}/></a>
+                            <div className={"col-12 col-md-6 d-inline d-md-flex justify-content-center"} style={{paddingTop: "18px"}}>
+                                <a href={"https://www.houselogic.com/?nicmp=hlim%26nichn=footerlink%26niseg=rc"} target="_blank"><img alt={"house_logic"} src={require("./../home/images/icons/house_logic_icon.png")}/></a>
+                                <a href={"https://realtoru.edu/about/"} target="_blank"><img alt={"university"} src={require("./../home/images/icons/university_icon.png")}/></a>
                             </div>
                         </div>
                     </div>
@@ -19,7 +25,7 @@ class Footer extends React.Component {
                 <div className={"container-fluid end2"}>
                     <div className={"container"}>
                         <div className={"bar-nav-bottom"}>
-                            <div className={"ul-wrapper"}>
+                            {/* <div className={"ul-wrapper"}>
                                 <ul className={"row"}>
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>About us</a></li>
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>Careers</a></li>
@@ -34,8 +40,8 @@ class Footer extends React.Component {
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>Tech Blog</a></li>
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>Sitemap</a></li>
                                 </ul>
-                            </div>
-                            <div className={"d-flex ul-wrapper"}>
+                            </div> */}
+                            {/* <div className={"d-flex ul-wrapper"}>
                                 <h6 style={{fontSize: "13px"}}>PRODUCTS</h6>
                                 <ul className={"row"} style={{marginLeft:"-70px"}}>
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>Leads & Branding</a></li>
@@ -68,7 +74,7 @@ class Footer extends React.Component {
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>Makaan.comHousing.com</a></li>
                                     <li className={"col-lg-auto col-md-3 col-sm-4"}><a href={"/"}>PropTiger.com</a></li>
                                 </ul>
-                            </div>
+                            </div> */}
                             <p className={"lastP"}><span
                                 className={"lightgray"}>© 1995-2019</span> National Association of REALTORS® <span
                                 className={"lightgray"}> and </span> Move, Inc. <span className={"lightgray"}> All rights reserved.</span>
