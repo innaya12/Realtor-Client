@@ -1,5 +1,6 @@
 import React from 'react';
-import {addUserToDB} from '../../data/addData/addUsers'
+import {Link} from "react-router-dom";
+import {addUserToDB} from '../../data/users'
 
 class Signup extends React.Component {
     constructor(props) {
@@ -92,8 +93,11 @@ class Signup extends React.Component {
                                     fontSize: "20px",
                                     marginTop: "10px"
                                 }}
-                                type={"button"} onClick={this.onCheck}> Submit
+                                type={"button"} onClick={this.onCheck}> Sign Up
                         </button>
+                        <Link to="/login">
+                            <p>Registered? Log In</p>
+                        </Link>
                     </div>
                 </div>
             </main>

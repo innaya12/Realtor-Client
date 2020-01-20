@@ -1,4 +1,5 @@
 import React from "react";
+import './style.css'
 
 class Carousel extends React.Component{
     constructor(props) {
@@ -44,7 +45,7 @@ class Carousel extends React.Component{
                 <a className={"carousel-control-prev"} href={"#carouselExampleControls"} role={"button"}
                    data-slide={"prev"}>
                     <span className={"carousel-control-prev-icon"} aria-hidden={"true"}/>
-                    <span className={"sr-only"}>Previous</span>
+                    <span className={"sr-only"} >Previous</span>
                 </a>
                 <a className={"carousel-control-next"} href={"#carouselExampleControls"} role={"button"}
                    data-slide={"next"}>
@@ -53,8 +54,8 @@ class Carousel extends React.Component{
                 </a>
                 <div className={"position-absolute"} style={{bottom: "10px", left: "8px"}}>
                     <p className={"propertyType greenTitle"}>{apartment.description}</p>
-                    <p className={"propertyType black mx-3"}>{apartment.propertyType}</p>
-                    <p className={"propertyType grayTitle"}>{apartment.title}</p>
+                    {/* <p className={"propertyType black mx-3"}>{apartment.propertyType}</p>
+                    <p className={"propertyType grayTitle"}>{apartment.title}</p> */}
                 </div>
             </div>
 

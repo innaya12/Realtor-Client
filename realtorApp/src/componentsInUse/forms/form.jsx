@@ -1,16 +1,40 @@
 import React from 'react';
+import {getCountries} from '../../data/countries'
 
 class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            countries: ''
+        };
+    }
+
+    async componentDidMount() {
+        try{
+            let countries = getCountries()
+            this.setState({ 
+                countries
+            });
+        }catch(error){
+            console.log(error.message)
+        }
+    };
 
     render() {
-        const {handleChange, onSubmit} = this.props;
+        const {handleChange} = this.props;
+        const {countries} = this.state;
         return (
             <main className={"sticky-top navbar-light main container-fluid"} style={{backgroundColor: "white"}}>
-                <form id={"filter-gallery"} className={"row align-items-center"} onSubmit={onSubmit}>
-                    <input className={"d-none d-md-inline"} placeholder={"Search By Address"} onChange={(e) => handleChange(e)} name={"address"}
-                           id="address"/>
-                    {/*<input className={"d-none d-md-inline"} onChange={(e) => handleChange(e)} name={"city"}*/}
-                    {/*       id="address" placeholder={"Search by city"}/>*/}
+                <form id={"filter-gallery"} className={"row align-items-center"}>
+                    <div className={"d-none d-md-inline"} id="address">
+                        <select id="inputState" className="form-control" name={"country"}>
+                            <option defaultValue>Country</option>
+                            {/* {countries.length !== 0 &&
+                            countries.map((city, i) => 
+                                <option>{city.name}</option>
+                            )} */}
+                        </select>
+                    </div>
                     <div className={"d-flex align-items-center dropdown show nav-bar new-york"}>
                         <div className={"div-wrapper flex-wrap "}>
                             <a className={"btn btn-secondary dropdown-toggle"} href={"/"}
@@ -44,25 +68,25 @@ class Form extends React.Component {
                         <div className={"div-wrapper"}>
                             <a className={"btn btn-secondary dropdown-toggle"} href={"/"}
                                role={"button"} id={"dropdownMenuLink"} data-toggle={"dropdown"} aria-haspopup={"true"}
-                               aria-expanded={"false"}>Beds</a>
+                               aria-expanded={"false"}>Baths</a>
                             <div className={"dropdown-menu"} aria-labelledby="dropdownMenuLink">
                                 <div className={"hidden-toggle mini-div"}>
                                     <div className={"container"}>
                                         <div className={"row beds-div d-block"}>
-                                            <h4>Bedrooms</h4>
+                                            <h4>Baths</h4>
                                         </div>
                                         <div className={"radio-wrapper row flex-nowrap mini-div-wrapper"}
                                              style={{width: "max-content"}}>
                                             <input className={"radioButton"} type={"radio"} value={"1"}
-                                                   name={"number_of_beds"} onChange={handleChange}/>1
+                                                   name={"number_of_bath"} onChange={handleChange}/>1
                                             <input className={"radioButton"} type={"radio"} value={"2"}
-                                                   name={"number_of_beds"} onChange={handleChange}/>2
+                                                   name={"number_of_bath"} onChange={handleChange}/>2
                                             <input className={"radioButton"} type={"radio"} value={"3"}
-                                                   name={"number_of_beds"} onChange={handleChange}/>3
+                                                   name={"number_of_bath"} onChange={handleChange}/>3
                                             <input className={"radioButton"} type={"radio"} value={"4"}
-                                                   name={"number_of_beds"} onChange={handleChange}/>4
+                                                   name={"number_of_bath"} onChange={handleChange}/>4
                                             <input className={"radioButton"} type={"radio"} value={"5"}
-                                                   name={"number_of_beds"} onChange={handleChange}/>5
+                                                   name={"number_of_bath"} onChange={handleChange}/>5
                                         </div>
                                     </div>
                                 </div>
@@ -81,15 +105,15 @@ class Form extends React.Component {
                                         <div className={"radio-wrapper row flex-nowrap mini-div-wrapper"}
                                              style={{width: "max-content"}}>
                                             <input className={"radioButton"} type={"radio"} value={"1"}
-                                                   name={"number_of_rooms"} onChange={handleChange}/>1
+                                                   name={"number_of_room"} onChange={handleChange}/>1
                                             <input className={"radioButton"} type={"radio"} value={"2"}
-                                                   name={"number_of_rooms"} onChange={handleChange}/>2
+                                                   name={"number_of_room"} onChange={handleChange}/>2
                                             <input className={"radioButton"} type={"radio"} value={"3"}
-                                                   name={"number_of_rooms"} onChange={handleChange}/>3
+                                                   name={"number_of_room"} onChange={handleChange}/>3
                                             <input className={"radioButton"} type={"radio"} value={"4"}
-                                                   name={"number_of_rooms"} onChange={handleChange}/>4
+                                                   name={"number_of_room"} onChange={handleChange}/>4
                                             <input className={"radioButton"} type={"radio"} value={"5"}
-                                                   name={"number_of_rooms"} onChange={handleChange}/>5
+                                                   name={"number_of_room"} onChange={handleChange}/>5
                                         </div>
                                     </div>
                                 </div>

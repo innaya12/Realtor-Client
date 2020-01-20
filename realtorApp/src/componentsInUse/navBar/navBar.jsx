@@ -56,10 +56,7 @@ class NavBar extends React.Component {
                     <div className={"d-none nv d-lg-flex"}>
                         <ul className={"nav-bar-list nav-bar d-flex"}>
                             {navBar.map((navbar, i) => <BuildNavbar label={navbar.label}
-                                                                    activeItem={this.state.activeItem === i}
-                                                                    changeActiveItem={this.changeActiveItem}
-                                                                    innerMenu={navbar.innerMenu}
-                                                                    index={i}
+                                                                    changeActiveItem={this.changeActiveItem}                                                                    index={i}
                                                                     key={i}/>
                             )}
 
@@ -67,44 +64,6 @@ class NavBar extends React.Component {
                     </div>
                     <div className={"col-auto d-flex justify-content-between"}>
                         <ul className={"nav-bar-list nav-bar d-flex"}>
-                            <li className={"d-none d-lg-flex "}>
-                                <i className={"fas fa-mobile-alt"}/>
-                                <div className={"hidden-middle-bar"}>
-                                    <div className={"middle-bar"}>
-                                        <div className={"middle-bar-img"}>
-                                            <img alt={"/"} src={require("../home/images/phones.JPG")} />
-                                        </div>
-                                        <div className={"middle-bar-text"}>
-                                            <a href={"/"}>Realtor.com® mobile apps</a>
-                                            <p>Find homes for sale or rent on iPhone, iPad, and Android</p>
-                                        </div>
-
-                                    </div>
-                                    <div className={"middle-bar"}>
-                                        <div className={"middle-bar-img"}>
-                                            <img alt={"/"} src={require("../home/images/red_r.png")} />
-                                        </div>
-                                        <div className={"middle-bar-text"}>
-                                            <a href={"/"}>Realtor.com® Real Estate</a>
-                                            <br/>
-                                            <a href={"/"}>iOS</a>
-                                            <span>|</span>
-                                            <a href={"/"}>Android</a>
-                                        </div>
-                                    </div>
-                                    <div className={"middle-bar"}>
-                                        <div className={"middle-bar-img"}>
-                                            <img alt={"/"} src={require("../home/images/red_r.png")} />
-                                        </div>
-                                        <div className={"middle-bar-text"}>
-                                            <a href={"/"}>iOS Realtor.com® Rentals</a>
-                                            <a href={"/"}>iOS</a>
-                                            <span>|</span>
-                                            <a href={"/"}>Android</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <Link to="/login">
                                     <p>Log in</p>
@@ -121,11 +80,11 @@ class NavBar extends React.Component {
                                 </div>
                                 </Link>
                             </li>
-                            <li className="d-none d-lg-flex">
+                            {/* <li className="d-none d-lg-flex">
                                 <span>|</span>
-                            </li>
+                            </li> */}
                             <li className="d-none d-lg-flex">
-                                <p>Advertise</p>
+                                {/* <p>Advertise</p> */}
                                 <div className={"hidden-right-bar"}>
                                     <p>Real Estate Marketing and Advertising for Agents and Brokers</p>
                                 </div>

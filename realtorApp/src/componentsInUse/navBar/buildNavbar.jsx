@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 class BuildNavbar extends React.Component {
 
     render() {
-        const {label, index, innerMenu, changeActiveItem, activeItem} = this.props;
+        const {label, index, changeActiveItem} = this.props;
         return (
             <li onMouseOver={() => changeActiveItem(index)}>
                 {index === 0 && //linked before to cities need to change to the new updated title

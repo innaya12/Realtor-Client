@@ -181,7 +181,7 @@ main #filter-gallery #address {
     font-weight: normal;
     padding: 6px;
     margin-left: 10px;
-    border: lightgray 1px solid;
+    /* border: lightgray 1px solid; */
 }
 
 #resetButton {
@@ -311,11 +311,11 @@ main .new-york .div-wrapper .dropdown-menu{
     cursor: pointer;
 }
 
-.beds-div , .baths-div {
+.beds-div{
     flex-wrap: nowrap;
 }
 
-.beds-div lable ,.baths-div lable {
+.beds-div lable{
     border: transparent 1px solid;
     padding: 10px;
     margin: 6px;
@@ -323,7 +323,7 @@ main .new-york .div-wrapper .dropdown-menu{
     color: gray;
 }
 
-.beds-div lable:hover{
+.baths-div lable:hover{
     border-radius: 50%;
     color: red;
     cursor: pointer;
