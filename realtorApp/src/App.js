@@ -9,14 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './componentsInUse/gallery/mystyle.css';
 import './componentsInUse/home/style/home-page.css';
 import './componentsInUse/gallery/singleApratment.css';
-import Form from './componentsInUse/form/form'
+import Form from './componentsNotInUse/form/form'
 import Login from './componentsInUse/login/loginForm';
 import PageHome from "./componentsInUse/pages/page-home";
 import PageGallery from "./componentsInUse/pages/page-gallery"
 import Signup from './componentsInUse/login/signup'
 import SingleApartment from './componentsInUse/gallery/singleApartment'
 import AddApartment from './componentsInUse/apartment/AddApartment'
-import {getApartment} from "./data/getData/getApartments"; //
+import {getApartment} from "./data/apartments"; //
 
 class App extends React.Component {
     constructor(props) {
@@ -26,15 +26,15 @@ class App extends React.Component {
             loading: true
         };
     }
-    componentDidMount() {
-        getApartment((data) => {
-            this.handleApartmentSuccess(data)
-        })
-    };
-    handleApartmentSuccess = (data) => {
-        this.setState({
-            apartmentArray: data
-        });
+    async componentDidMount() {
+        try{
+            const apartments = await getApartment();
+            this.setState({
+                apartmentArray: apartments
+            });
+        }catch(error){
+            alert(error.message);
+        }
     };
 
     render(){

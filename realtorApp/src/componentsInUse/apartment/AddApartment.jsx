@@ -1,5 +1,5 @@
 import React from 'react';
-import {addApartmentToDB} from '../../data/addData/addApartment'
+import {addApartmentToDB} from '../../data/apartments'
 
 class AddApartment extends React.Component {
     constructor(props) {

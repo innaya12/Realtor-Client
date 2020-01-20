@@ -1,5 +1,6 @@
 import React from "react";
-import {getUsersById} from '../../data/getData/getUsers'
+import {Link} from "react-router-dom";
+import {getUsersById} from '../../data/users'
 
 class Login extends React.Component{
     constructor(props) {
@@ -19,22 +20,14 @@ class Login extends React.Component{
         });
     };
 
-    onCheck = (e) => {
+    onCheck = async e => {
         e.preventDefault();
-        this.callme();
-    };
-
-    callme(){
-        getUsersById(this.handleUsersSuccess, this.state.email, this.state.password)
+        const user = await getUsersById(this.state.email, this.state.password);
+        this.setState({ 
+            user
+        });
     };
     
-    handleUsersSuccess = (data) =>{
-        console.log("data here", data)
-        this.setState({ 
-            user: data
-        });
-    }
-
     render() {
         console.log("user", this.state.user)
         const type = 2; // 1 = top forms; 2 = bottom
@@ -50,11 +43,13 @@ class Login extends React.Component{
         return(
             <main className={"part-2 paddingPage singlePage"} style={{position: "relative"}}>
                 <div className={"container"}>
-                    {/* <p className={"wrap-text-div"}>singing form </p> */}
                     <div style={mainStyle} className={"d-none d-lg-inline col-md-offset-4 regForm"}>
-                        <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Sign In</h1>
+                        <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>
+                            Log in to your account</h1>
+                        <p className={"wrap-text-div"}>
+                            Access all your saved properties, searches, notes and more.</p>
                             <div className={"col-sm-12"} style={inputWrapper}>
-                                <input type={"email"} className={"form-control"} placeholder={"Email"}
+                                <input type={"email"} className={"form-control"} placeholder={"Email Address"}
                                     name={"email"} style={inputStyle} onChange={this.handleChange}/>
                             </div>
                             <div className={"col-sm-12"} style={inputWrapper}>
@@ -69,8 +64,11 @@ class Login extends React.Component{
                                         fontSize: "20px",
                                         marginTop: "10px"
                                     }}
-                                    type={"button"} onClick={this.onCheck} > Submit
+                                    type={"button"} onClick={this.onCheck} > Log In
                             </button>
+                            <Link to="/signup">
+                                <p>No account? Sign Up</p>
+                            </Link>
                         </div>
                     </div>
                 <div className={"text-center"} style={{position: "relative", marginBottom: "60px", marginTop: "60px"}}>

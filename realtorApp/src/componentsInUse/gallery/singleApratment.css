@@ -65,9 +65,10 @@ main .singlePage  {
     width: 40px !important;
 }
 
-header .lefty {
+header a .lefty {
     font-size: 28px;
-    margin: 0 10px;
+    margin: 5px 10px 0 10px;
+    color:black
 }
 
 header {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {getApartmentByID} from "../../data/getData/getApartments";
-import {getImagesByApartmentId} from "../../data/getData/getImages";
+import {getFilterApartments} from "../../data/apartments";
+import {getImagesByApartmentId} from "../../data/images";
 import Footer from "../footer/footer";
 import Carousel from "../forms/carousel";
 import RegForm from "../forms/regForm";
@@ -17,28 +17,25 @@ class SingleApartment extends React.Component {
         };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         let apartmentId = '' + this.props.match.params.id
-        getApartmentByID(this.handleApartmentSuccess, apartmentId)
-        getImagesByApartmentId(this.handleimagesSuccess, apartmentId)
-    };
-    handleimagesSuccess = (data) =>{
-        this.setState({ 
-            images: data
-        });
-    }
-    handleApartmentSuccess = (data) => {
-        this.setState({ 
-            loading: false,
-            apartment: data
-        });
+        try {
+            const images = await getImagesByApartmentId(apartmentId)
+            const apartment = await getFilterApartments(apartmentId)
+            this.setState({
+                loading: false,
+                images,
+                apartment
+            });
+        }catch(error){
+            console.log(error.message)
+        }
     };
 
     render() {
         const {apartment, images} = this.state;
         const {onSubmit, handleChange} = this.props;
         // const propertyType = apartment.for_sale ? "for Sale" : apartment.for_rent ? "for Rent" : "for Visit";
-
         return (            
             <div>
                 {this.state.loading ? <p>loading</p> :
@@ -54,9 +51,9 @@ class SingleApartment extends React.Component {
                                                 <div className={"inner-burger"}/>
                                             </div>
                                         </Link>
+                                        <Link to={"/"}>
                                         <div className={"col-auto logo d-none d-lg-flex"}>
                                             <i className={"fa fa-angle-left lefty"} aria-hidden={"true"}/>
-                                            <Link to={"/"}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="156" height="29"
                                                      viewBox="0 0 445 82">
                                                     <g fill="none">
@@ -75,8 +72,8 @@ class SingleApartment extends React.Component {
                                                               d="M411 79.6v-.2l1.7-.6c2.3-1 3.1-1.5 3.7-4.6.6-2.3.5-6 .5-9.3V45c0-5.4-.5-7.9-1.8-9.6-1.5-2-3.3-3-6.3-3-5.2 0-11 8.9-11.8 17.8l-.2 5.3v9.5c0 3.3-.3 7 .3 9.3.6 3 1.5 3.7 3.8 4.6l1.8.6v.2H381v-.2l1.7-.6c2.3-1 3.1-1.5 3.7-4.6.6-2.3.5-6 .5-9.3V45c0-5.4-.6-7.9-1.9-9.6-1.5-2-3.3-3-6.3-3-5.8 0-11 9.1-11.8 18-.2 2.8-.2 1.7-.2 5.2v9.4c0 3.3-.3 7 .3 9.4.6 3.1 1.5 3.5 4 4.5l1.5.6v.2h-21.5v-.2l1.7-.6c2.4-1 3-1.4 3.7-4.5.6-2.3.4-6.1.4-9.4V45c0-2 0-7.5-.2-9.3-.3-2.2-.8-2.7-2-3.7-1.1-.9-2.1-.9-3-1v-.2h14.6c.7 0 .7 0 .7.7l-.2 11.3a17 17 0 0 1 16.1-13c5.1 0 8.7 1.4 10.8 4 1.1 1.3 3 4.6 3 9.3 1.6-5.4 4.3-8.4 6.8-10.1a18 18 0 0 1 9.4-3.3c6.4 0 9.3 2 11 4.2 1.5 1.7 2.8 4.8 2.8 10.7V65c0 3.3-.1 7 .4 9.3.6 3 1.4 3.6 3.8 4.6l1.7.6v.2H411m27.5-48.5c.5 0 .8-.1 1-.3.3-.2.4-.5.4-.8a1 1 0 0 0-.3-.9c-.3-.2-.6-.2-1-.2h-1.8V31h1.7zm-3-3.5h3c1 0 1.7.3 2.2.8.4.4.6.9.6 1.5s-.1 1-.4 1.4c-.4.4-.7.6-1.2.7l1.9 2.7H440l-1.7-2.4h-1.5v2.4h-1.4v-7zm2.6 9.6a5.6 5.6 0 0 0 4.1-1.8 5.7 5.7 0 0 0 1.7-4 5.8 5.8 0 0 0-1.6-4.1 5.8 5.8 0 0 0-9.9 4v.1a5.7 5.7 0 0 0 3.5 5.3c.7.3 1.4.5 2.2.5zm0 .8a6.5 6.5 0 0 1-4.6-2 6.7 6.7 0 0 1-2-4.6 6.4 6.4 0 0 1 2-4.7 6.7 6.7 0 0 1 4.7-2 6.5 6.5 0 0 1 6 4 6.4 6.4 0 0 1 0 5.1 6.7 6.7 0 0 1-6 4.2z"/>
                                                     </g>
                                                 </svg>
-                                            </Link>
-                                        </div>
+                                            </div>      
+                                        </Link>
                                     </div>
                                     <div className={"sticky-top navbar-light main container-fluid"}
                                          style={{margin: "9px"}}>
@@ -85,23 +82,27 @@ class SingleApartment extends React.Component {
                                             <Link to={"/apartments"}>
                                                 <input onChange={(e) => handleChange(e)} name={"address"} id={"address"}
                                                        style={{width: "180px"}}/>
-                                                <button id={"button-icon-search"}
+                                                {/* <button id={"button-icon-search"}
                                                         className={" button-search red-button"}
                                                         style={{paddingTop: "7px"}}><i
-                                                    className={"fab fa-sistrix"} aria-hidden={"true"}/></button>
+                                                    className={"fab fa-sistrix"} aria-hidden={"true"}/></button> */}
                                             </Link>
                                         </form>
                                     </div>
                                     <div className={"col-auto d-flex justify-content-between"}>
                                         <ul className={"nav-bar-list nav-bar d-flex"}>
-                                            <li className={"d-none d-lg-flex "}>
+                                            {/* <li className={"d-none d-lg-flex "}>
                                                 <i className={"fas fa-mobile-alt"}/>
+                                            </li> */}
+                                            <li>
+                                                <Link to="/login">
+                                                    <p>Log in</p>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <p>Log in</p>
-                                            </li>
-                                            <li>
-                                                <p>Sign up</p>
+                                                <Link to="/signup">
+                                                    <p>Sign up</p>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -119,7 +120,9 @@ class SingleApartment extends React.Component {
                                 <Carousel apartment={apartment}
                                         images = {images}/>
                             }
-                            <RegForm type={1}/>
+                            <Link to="/signup">
+                                <RegForm type={1} state={{zIndex: "1000"}}/>
+                            </Link>
                             <div className={"under-image"}>
                                 <p><a href={"/"}>Vaterans: Check Eligibility for a $0 Down VA Loan</a> |
                                     <a href={"/"}> How much can you afford?</a></p>
@@ -167,11 +170,13 @@ class SingleApartment extends React.Component {
                                         </ul>
                                     </div>
                                     <div className={"row justify-content-center"} style={{marginTop: "20px"}}>
-                                        <button type={"button"} className={"btn btn-outline-danger button1"}
+                                        {/* <button type={"button"} className={"btn btn-outline-danger button1"}
                                                 style={{backgroundColor: "red", color: "white"}}>Ask a question
-                                        </button>
-                                        <button type={"button"} className={"btn btn-outline-secondary button1"}>Share this home
-                                        </button>
+                                        </button> */}
+                                        <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
+                                            <button type={"button"} className={"btn btn-outline-secondary button1"}>Share this home
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                                 <div>
@@ -192,10 +197,13 @@ class SingleApartment extends React.Component {
                             {/* <img alt={''}  src={require("./images/cal.PNG")} style={{width:"200px", height:"100px"}}/> */}
                             <img alt={''} src={require("./images/other.jpg")}
                                  style={{width: "1000px", height: "550px", marginTop: "50px"}}/>
-                            <RegForm type={2}/>
+                            <Link to="/signup">
+                                <RegForm type={2}/>
+                            </Link>
                         </div>
                         <div>
                         {images.length !== 0 &&
+
                             <SecondCarousel apartment={apartment}
                                             images = {images}/>
 

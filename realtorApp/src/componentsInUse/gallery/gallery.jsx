@@ -1,6 +1,8 @@
 import React from 'react';
 import BuildApartment from "./buildApartment";
 import Form from "../forms/form";
+import {getFilterApartments} from '../../data/apartments'
+import {getCountriesByCountry} from '../../data/citiesByCountry'
 
 class Gallery extends React.Component {
     constructor(props) {
@@ -9,68 +11,81 @@ class Gallery extends React.Component {
             apartmentArray: this.props.apartmentArray,
             city: '',
             price: '',
+            country: '',
             address: '',
-            number_of_beds: '',
-            number_of_rooms: '',
-            listingStatus: ''
+            number_of_bath: '',
+            number_of_room: '',
+            listingStatus: '',
         };
     }
 
-    // searchApartmentByCity = () => {
-    //     let newArray = this.state.arrayCity;
-    //     if (this.state.city) {
-    //         newArray = newArray.filter(city => city["label"].toLowerCase().includes(this.state.city));
-    //         console.log("list", newArray);
-    //     }
-    //     this.setState({apartmentArray: newArray});
-    // };
+    createQuery() {
+        const {country, city, price, number_of_bath, number_of_room, listingStatus} = this.state;
+        let query = '?';
+        if (country) {
+            query += `country=${country}&`
+        }
+        if (city) {
+            
+            query += `city=${city}&` 
+        }
+        if (price) {
+            query += `price=${price}&` 
+        }
+        if (number_of_bath) {
+            query += `number_of_bath=${number_of_bath}&` 
+        }
+        if (number_of_room) {
+            query += `number_of_room=${number_of_room}&` 
+        }
+        if (listingStatus) {
+            query += `listingStatus=${listingStatus}&` 
+        }
+        this.filterApartment(query);
+    };
+    async filtetCity(){
+        try{
+            const city = getCountriesByCountry(95)
+            this.setState({
+                city
+            });
+        }catch(error){
+            console.log(error)
+        }
+    }
+    async filterApartment(query){
+        try {
+            const apartmentArray = getFilterApartments(query);
+            this.setState({ 
+                apartmentArray
+            });
+        }catch(error){
+            console.log(error)
+        }
+    }
 
-    // createFilter() {
-    //     const {address, price, number_of_beds, number_of_rooms, listingStatus} = this.state;
-    //     let newList = this.state.apartmentArray;
-    //     if (address) {
-    //         console.log(address);
-    //         newList = newList.filter(apartment => apartment["address"].toLowerCase().includes(address));
-    //         console.log("list", newList);
-    //     }
-    //     if (price) {
-    //         let priceMin = parseInt(price.slice(0, price.indexOf('-')));
-    //         let priceMax = parseInt(price.slice(price.indexOf('-') + 1));
-    //         newList = newList.filter(apartment => priceMax >= apartment["price"] && priceMin < apartment["price"]);
-    //     }
-    //     if (number_of_beds) {
-    //         newList = newList.filter(apartment => (apartment["number_of_beds"] === parseInt(number_of_beds)));
-    //     }
-    //     if (number_of_rooms) {
-    //         newList = newList.filter(apartment => (apartment["number_of_rooms"] === parseInt(number_of_rooms)));
-    //     }
-    //     if (listingStatus) {
-    //         newList = newList.filter(apartment => (apartment[listingStatus] === true));
-    //     }
-    //     this.setState({apartmentArray: newList});
-    // };
-
-    // handleChange = (e) => {
-    //     e.preventDefault();
-    //     let {name, value} = e.target;
-    //     this.setState({
-    //         [name]: value.toLowerCase(),
-    //     }, () => {
-    //         this.createFilter();
-    //     });
-    // };
-
-    // onSubmit = (e) => {
-    //     e.preventDefault();
-    // };
+    handleChange = (e) => {
+        e.preventDefault();
+        let {name, value} = e.target;
+        if(name === "country"){
+            this.filtetCity();
+        }
+        this.setState({
+            [name]: value.toLowerCase(),
+        }, () => {
+            this.createQuery();
+        });
+    };
 
     render() {
-        // console.log("this.state.apartmentArray", this.state.apartmentArray)
+        console.log("country", this.state.country)
+        console.log("city", this.state.city)
+
         return (
             <div className={"row justify-content-between wrap-img-div"}>
-                <Form onSubmit={this.onSubmit}
-                      handleChange={this.handleChange}
-                />
+                <Form handleChange={this.handleChange}/>
+                {this.state.apartmentArray.length !== 0 &&
+                        <p style={{marginLeft:"20px",width:"-webkit-fill-available",color: "gray",fontSize: "14px"}}>{this.state.apartmentArray.length} Homes</p>}
                 {this.state.apartmentArray.map((apartment, i) =>
                     <BuildApartment {...apartment} key={i}/>
                 )}
