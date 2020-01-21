@@ -1,14 +1,13 @@
 import fetcher from './fetcher';
 
 
-const getCountriesByCountry = async (countryId) => {
+const getCitiesByCountry = async (countryId) => {
     try {
         const cities = await fetcher.get(`cities/${countryId}`);
-        console.log(" here cities", cities)
-        return cities
+        return cities.data;
     }catch(error){
         console.log(error)
     }
 } 
 
-export {getCountriesByCountry};
+export {getCitiesByCountry};

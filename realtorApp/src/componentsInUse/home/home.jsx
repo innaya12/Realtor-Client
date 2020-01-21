@@ -8,7 +8,6 @@ class Home extends React.Component {
         this.state = {
             apartmentArray: this.props.apartmentArray,
             loading: true,
-            randomId: '',
             randomArray: [],
         };
     }
@@ -26,8 +25,8 @@ class Home extends React.Component {
 
     sliceArray = () => {
         for (let i = 0; i < 4; i++) {
-            this.state.randomId = Math.floor(Math.random() * 10) + 90;
-            let ChooseApartment = this.state.apartmentArray.find(apartment => (apartment.id === this.state.randomId));
+            let randomId = Math.floor(Math.random() * 10) + 90;
+            let ChooseApartment = this.state.apartmentArray.find(apartment => (apartment.id === randomId));
             this.state.randomArray.push(ChooseApartment);
         }
         this.setState({
@@ -49,22 +48,20 @@ class Home extends React.Component {
                     <div className={"container"}>
                         <div className={"row justify-content-center align-items-center flex-column"}>
                             <h1> The Home of Home Search<sup className={"sm"}>℠</sup></h1>
-                            <p className={"d-none d-md-flex"}> With the most complete source of homes for sale & real
-                                estate
-                                near you</p>
+                            <p className={"d-none d-md-flex"}> With the most complete source of homes for sale & real estate near you</p>
                             <ul className={"menu row"}>
                                 <Link to="/apartments">
-                                    <li>BUY</li>
+                                    <li>SALE</li>
                                 </Link>
                                 <Link to="/apartments">
                                     <li>RENT</li>
                                 </Link>
                                 <Link to="/apartments">
-                                    <li>JUST SOLD</li>
+                                    <li>BOTH</li>
                                 </Link>
-                                <Link to="/apartments">
+                                {/* <Link to="/apartments">
                                     <li className={"d-none d-md-flex"}>HOME VALUE</li>
-                                </Link>
+                                </Link> */}
                             </ul>
                             <div className={"form d-flex align-items-stretch"}>
                                 <input type={"text"} className={"d-none d-md-inline"} name={"city"} id="address"
@@ -84,8 +81,10 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className={"container part-2 padding"}>
-                    <h2 className={"wrap-text-div"}>New listing in San Francisco, CA</h2>
-                    <a href={"www.google.com"}>View All 422 New Listings</a>
+                    <h2 className={"wrap-text-div"}>New listing in Tel Aviv, IL</h2>
+                    <Link to="/apartments">
+                        <p>View All New Listings</p>
+                    </Link>
                     <div className={"row justify-content-between wrap-img-div"}>
                         {this.state.randomArray && this.state.randomArray.length > 0 &&
                         this.state.randomArray.map((apartment, i) =>

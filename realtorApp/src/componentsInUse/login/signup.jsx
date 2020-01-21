@@ -6,6 +6,8 @@ class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            valid: '',
+            message: '',
             user: '', 
             firstName : '',
             lastName: '',
@@ -23,44 +25,55 @@ class Signup extends React.Component {
         });
     };
 
-    onCheck = (e) => {
+    onCheck = async e => {
         e.preventDefault();
-        this.callme();
-    };
-    
-    callme(){
         const {firstName, lastName,email, password, phone} = this.state
-        addUserToDB(this.handleUsersSuccess, firstName, lastName,email, password, phone)
+        const user = await addUserToDB(firstName, lastName,email, password, phone);
+        if(user.data.length === 23){
+            this.setState({
+                valid: "notValid",
+                message: 'all fields are required'
+            })
+        } else if(user.data.length === 37){
+            this.setState({
+                valid: "notValid",
+                message: 'one or more of the inputs is invalid!'
+            })
+        } else {
+            this.setState({
+                user,
+                valid: "valid",
+            }, ()=>{
+                this.props.history.replace("/")
+            })
+        }
     };
     
-    handleUsersSuccess = (data) =>{
-        this.setState({ 
-            user: data
+    handleChange = (e) => {
+        e.preventDefault();
+        let {name, value} = e.target;
+        this.setState({
+            [name]: value.toLowerCase(),
         });
-    }
+    };
 
     render() {
-        console.log("user", this.state.user )
-        const type = 2; // 1 = top forms; 2 = bottom
-        const mainStyle = type === 1 ?
-            {width:"260px", height:"310px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .4)", top: "160px", left:"510px"} :
-            {width:"360px", height:"390px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", left:"0px"};
-
-        const inputWrapper = {
-            paddingTop: "10px"
-        };
-
-        const inputStyle = type === 1 ?
-            {borderRadius: "15px", width: "90%", fontSize: "12px"} :
-            {borderRadius: "0px", width: "90%", fontSize: "14px"};
+        const mainStyle = {width:"360px", height:"390px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", left:"0px"};
+        const inputWrapper = {paddingTop: "10px"};
+        const inputStyle = {borderRadius: "0px", width: "90%", fontSize: "14px"};
+        const {message, valid} = this.state;
 
         return(
-
             <main className={"part-2 paddingPage singlePage"} style={{position: "relative"}}>
-            <div className={"container"}>
+                <div className={"container"}>
                     <div style={mainStyle} className={"d-3 d-lg-inline col-md-offset-4 regForm"}>
                         <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Sign Up</h1>
                         <div className={"col-sm-12"} style={inputWrapper}>
+                            {valid === "notValid" &&
+                                <p className={"wrap-text-div"} style={{color:"#8B0000", fontSize:"14px", fontWeight:"bold"}}>
+                                    {message}</p>
+                            }
+
                             <input type={"text"} className={"form-control"} 
                                 placeholder={"First Name"}
                                 name={"firstName"}
@@ -95,6 +108,7 @@ class Signup extends React.Component {
                                 }}
                                 type={"button"} onClick={this.onCheck}> Sign Up
                         </button>
+                            <p>.</p>
                         <Link to="/login">
                             <p>Registered? Log In</p>
                         </Link>

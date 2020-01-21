@@ -35,15 +35,13 @@ class SecondCarousel extends React.Component {
                                              alt={"/"}/>
                                     </div>
                                 </div>
-
-                                <div className={"col-md-3 clearfix d-none d-md-block"}>
+                                {/* <div className={"col-md-3 clearfix d-none d-md-block"}>
                                     <div className={"card mb-2"}>
                                         <img className={"card-img-top"}
                                              src={"http://localhost:8000/" + images[4].url}
                                              alt={"/"}/>
                                     </div>
-                                </div>
-
+                                </div> */}
                                 <div className={"col-md-3 clearfix d-none d-md-block"}>
                                     <div className={"card mb-2"}>
                                         <img className={"card-img-top"}
