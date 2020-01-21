@@ -1,12 +1,13 @@
 import fetcher from './fetcher';
-const axios = require('axios');
 
-const addApartmentToDB = (handleSuccess,address, price, number_of_room, number_of_bath, sqft, description, main_image) => {
-    console.log("here")
-    axios.post(`http://localhost:8000/addapartment`, {address, price, number_of_room, number_of_bath, sqft, description, main_image})
-    .then(success => {
-        handleSuccess(success.data)
-    }).catch(error => console.log(error))
+const addApartmentToDB = async (address, price, number_of_room, number_of_bath, sqft, description, main_image) => {
+    console.log("added apartment to db")
+    try{
+        const add = await fetcher.post('/addapartment' , {address, price, number_of_room, number_of_bath, sqft, description, main_image});
+        return add;
+    }catch(error){
+        console.log(error)
+    }
 }
 
 const getApartment = async () => {
@@ -18,20 +19,37 @@ const getApartment = async () => {
     }
 }
 
+const getApartmentByID = async (query) => {
+    try{
+        const {data} = await fetcher.get(`/apartments/${query}`);
+        return data[0];
+    }catch(error){
+        console.log('Cant get apartments');
+    }
+}
 const getFilterApartments = async (query) => {
     try{
         const {data} = await fetcher.get(`/apartments/${query}`);
-        // console.log("hereeee", data[0])
-        return data[0];
+        return data;
     }catch(error){
-        throw new Error(`Cant get apartments`);
+        console.log('Cant get apartments');
     }
 }
 
-export {getApartment, getFilterApartments, addApartmentToDB};
+export {getApartment, getFilterApartments, addApartmentToDB, getApartmentByID};
 
 
 
+// const axios = require('axios');
+
+
+// const addApartmentToDB = (handleSuccess,address, price, number_of_room, number_of_bath, sqft, description, main_image) => {
+//     console.log("here")
+//     axios.post(`http://localhost:8000/addapartment`, {address, price, number_of_room, number_of_bath, sqft, description, main_image})
+//     .then(success => {
+//         handleSuccess(success.data)
+//     }).catch(error => console.log(error))
+// }
 
 
 

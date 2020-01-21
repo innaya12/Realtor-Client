@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {getFilterApartments} from "../../data/apartments";
+import Cookies from 'js-cookie'
+import {getApartmentByID} from "../../data/apartments";
 import {getImagesByApartmentId} from "../../data/images";
 import Footer from "../footer/footer";
 import Carousel from "../forms/carousel";
@@ -13,15 +14,21 @@ class SingleApartment extends React.Component {
         this.state = {
             apartment: '',
             loading: true,
-            images: ''
+            images: '',
+            user:''
         };
     }
 
     async componentDidMount() {
+        let user = Cookies.get('auth');
+        this.setState({
+            user 
+        })
+
         let apartmentId = '' + this.props.match.params.id
         try {
             const images = await getImagesByApartmentId(apartmentId)
-            const apartment = await getFilterApartments(apartmentId)
+            const apartment = await getApartmentByID(apartmentId)
             this.setState({
                 loading: false,
                 images,
@@ -90,6 +97,8 @@ class SingleApartment extends React.Component {
                                         </form>
                                     </div>
                                     <div className={"col-auto d-flex justify-content-between"}>
+                                    {!this.state.user &&
+
                                         <ul className={"nav-bar-list nav-bar d-flex"}>
                                             {/* <li className={"d-none d-lg-flex "}>
                                                 <i className={"fas fa-mobile-alt"}/>
@@ -105,6 +114,7 @@ class SingleApartment extends React.Component {
                                                 </Link>
                                             </li>
                                         </ul>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -202,8 +212,7 @@ class SingleApartment extends React.Component {
                             </Link>
                         </div>
                         <div>
-                        {images.length !== 0 &&
-
+                        {images.length !== 0 && images.length > 3 && 
                             <SecondCarousel apartment={apartment}
                                             images = {images}/>
 

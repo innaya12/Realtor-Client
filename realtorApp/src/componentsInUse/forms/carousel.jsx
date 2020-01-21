@@ -36,11 +36,11 @@ class Carousel extends React.Component{
                              src={"http://localhost:8000/" + images[3].url}
                              alt={"Fourth slide"}/>
                     </div>
-                    <div className={"carousel-item"}>
+                    {/* <div className={"carousel-item"}>
                         <img className={"hereIsTheImg d-block w-100"}
                              src={"http://localhost:8000/" + images[4].url}
                              alt={"Fifth slide"}/>
-                    </div>
+                    </div> */}
                 </div>
                 <a className={"carousel-control-prev"} href={"#carouselExampleControls"} role={"button"}
                    data-slide={"prev"}>
@@ -58,7 +58,6 @@ class Carousel extends React.Component{
                     <p className={"propertyType grayTitle"}>{apartment.title}</p> */}
                 </div>
             </div>
-
         )
     }
 }

@@ -16,27 +16,9 @@ import PageGallery from "./componentsInUse/pages/page-gallery"
 import Signup from './componentsInUse/login/signup'
 import SingleApartment from './componentsInUse/gallery/singleApartment'
 import AddApartment from './componentsInUse/apartment/AddApartment'
-import {getApartment} from "./data/apartments"; //
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            apartmentArray: [],
-            loading: true
-        };
-    }
-    async componentDidMount() {
-        try{
-            const apartments = await getApartment();
-            this.setState({
-                apartmentArray: apartments
-            });
-        }catch(error){
-            alert(error.message);
-        }
-    };
-
+    
     render(){
         return (
             <Router>
@@ -48,12 +30,8 @@ class App extends React.Component {
                             <Route path={"/addapartment"} component={AddApartment}/>
                             <Route path={"/login"} component={Login}/>  
                             <Route path={"/signup"} component={Signup}/>
-                            <Route path="/apartments">
-                                <PageGallery apartmentArray={this.state.apartmentArray}/>
-                            </Route>
-                            <Route path="/">
-                                <PageHome apartmentArray={this.state.apartmentArray}/>
-                            </Route>
+                            <Route path={"/apartments"} component={PageGallery}/>
+                            <Route path={"/"} component={PageHome}/>
                         </Switch>
                     </div>
                 </div>

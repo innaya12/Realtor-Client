@@ -2,3 +2,9 @@
 .carousel-control-prev {
     filter: invert(100%);
 }
+
+
+
+.beds-div h4{
+    padding-left: 10px;
+}

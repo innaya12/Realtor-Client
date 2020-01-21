@@ -1,17 +1,22 @@
 import React from 'react';
 import {addApartmentToDB} from '../../data/apartments'
+import {uploadImages} from '../../data/images'
+import './addapartmentStyle.css'
 
 class AddApartment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apartment: '',
+            apartment: null,
+            files: null,
+            valid: '',
+            message: '',
             price : '',
             number_of_room: '',
             number_of_bath: '', 
             sqft: '',
             description: '',
-            main_image: 'images/apartment/apartment_5.jpg'
+            main_image: null
         };
     }
     handleChange = (e) => {
@@ -22,86 +27,108 @@ class AddApartment extends React.Component {
         });
     };
 
-    onCheck = (e) => {
-        e.preventDefault();
-        this.callme();
-    };
-    
-    callme(){
-        const {address, price, number_of_room, number_of_bath, sqft, description, main_image
-        } = this.state
-        addApartmentToDB(this.handleApartmentSuccess, address, price, number_of_room, number_of_bath, sqft, description, main_image)
-    };
-    
-    handleApartmentSuccess = (data) =>{
-        console.log("now here")
-        this.setState({ 
-            apartment: data
-        });
+    fileSelectedHandle = event =>{
+        this.setState({
+            main_image: event.target.files[0]
+        })
     }
 
+
+    fileUploadHandler = () => {
+        const fd = new FormData();
+        fd.append('files', this.state.main_image)
+        this.sendingFiles(fd);
+    }
+
+    async sendingFiles(fd){
+        try {
+            const uploadImage = await uploadImages(fd);
+            console.log("uploadImage",uploadImage)
+            this.setState({
+                files: uploadImage
+            })
+
+        } catch(error){
+            console.log(error)
+        }
+    }
+
+    onCheck = async e => {
+        e.preventDefault();
+        const {address, price, number_of_room, number_of_bath, sqft, description, main_image
+        } = this.state
+        const apartment = await addApartmentToDB(address, price, number_of_room, number_of_bath, sqft, description, main_image)
+        this.setState({ 
+            apartment
+        });
+    };  
+
     render() {
-        const type = 2; // 1 = top forms; 2 = bottom
-        const mainStyle = type === 1 ?
-            {width:"260px", height:"310px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .4)", top: "160px", left:"510px"} :
-            {width:"360px", height:"390px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", left:"0px"};
-
-        const inputWrapper = {
-            paddingTop: "10px"
-        };
-
-        const inputStyle = type === 1 ?
-            {borderRadius: "15px", width: "90%", fontSize: "12px"} :
-            {borderRadius: "0px", width: "90%", fontSize: "14px"};
+        const mainStyle = {width:"1000px", height:"450px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", right:"500px"};
+        const inputWrapper = { paddingTop: "20px" };
+        const inputStyle = {borderRadius: "5px", width: "90%", fontSize: "15px"};
+        // const {message, valid, apartment} = this.state;
 
         return(
-            <main className={"part-2 paddingPage singlePage"} style={{position: "relative"}}>
-            <div className={"container"}>
-                    <div style={mainStyle} className={"d-3 d-lg-inline col-md-offset-4 regForm"}>
-                        <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Add Apartment</h1>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} 
-                                placeholder={"address"}
-                                name={"address"}
-                                style={inputStyle} onChange={this.handleChange}/>
+            <div className={"addApartment"} style={{position: "relative"}}>            
+                <div className={"container-fluid"}>
+                    <div className={"row"}>
+                        <div style={mainStyle} className={"d-3 d-lg-inline col-md-offset-4 regForm"}>
+                            <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Add Apartment</h1>
+                                <div className={"justify-content-between"}>
+                                <div className={"col-4 col-md-6"} style={inputWrapper}>
+                                    <input type={"text"} className={"form-control"} 
+                                        placeholder={"address"}
+                                        name={"address"}
+                                        style={inputStyle} onChange={this.handleChange}/>
+                                </div>
+                                <div className={"col-4 col-md-6"} style={inputWrapper}>
+                                    <input type={"text"} className={"form-control"} 
+                                        placeholder={"price"}
+                                        name={"price"}
+                                        style={inputStyle} onChange={this.handleChange}/>
+                                </div>
+                                <div className={"col-4 col-md-6"} style={inputWrapper}>
+                                    <input type={"text"} className={"form-control"} placeholder={"Number of rooms"}
+                                        name={"number_of_room"} style={inputStyle} onChange={this.handleChange}/>
+                                </div>
+                                <div className={"col-4 col-md-6"} style={inputWrapper}>
+                                    <input type={"text"} className={"form-control"} placeholder={"Number of baths"}
+                                        name={"number_of_bath"}
+                                        style={inputStyle} onChange={this.handleChange}/>
+                                </div>
+                                <div className={"col-4 col-md-6"} style={inputWrapper}>
+                                    <input type={"text"} className={"form-control"} placeholder={"Sqft"}
+                                        name={"sqft"}
+                                        style={inputStyle} onChange={this.handleChange}/>
+                                </div>
+                                <div className={"col-4 col-md-6"} style={inputWrapper}>
+                                    <input type={"text"} className={"form-control"} placeholder={"Description"}
+                                        name={"description"}
+                                        style={inputStyle} onChange={this.handleChange}/>
+                                </div>
+
+                                <div className={"d-flex col-4 col-md-5"} style={inputWrapper}>
+                                    <input type="file" onChange={this.fileSelectedHandle} name="avatar" style={{display:"none"}} ref={fileInput => this.fileInput = fileInput}/>
+                                    <button onClick={() =>this.fileInput.click()}>Pick Image</button>
+                                    <button onClick={this.fileUploadHandler}>Upload</button>
+                                </div>
+                                
+                                <button className={"col-md-4 col-md-offset-4 btn"}
+                                        style={{
+                                            backgroundColor: "#ffffff",
+                                            color: "#626a69",
+                                            fontSize: "20px",
+                                            marginTop: "20px"
+                                        }}
+                                        type={"button"} onClick={this.onCheck}> Submit
+                                </button>
+                            </div>
                         </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} 
-                                placeholder={"price"}
-                                name={"price"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"Number of rooms"}
-                                name={"number_of_room"} style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"Number of baths"}
-                                name={"number_of_bath"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"Sqft"}
-                                name={"sqft"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"Description"}
-                                name={"description"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <button className={"col-md-4 col-md-offset-4 btn"}
-                                style={{
-                                    backgroundColor: "#ffffff",
-                                    color: "#626a69",
-                                    fontSize: "20px",
-                                    marginTop: "10px"
-                                }}
-                                type={"button"} onClick={this.onCheck}> Submit
-                        </button>
                     </div>
                 </div>
-            </main>
+            </div>
+            
         )
     }
 }
