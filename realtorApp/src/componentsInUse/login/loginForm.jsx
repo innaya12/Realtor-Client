@@ -6,7 +6,7 @@ class Login extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            user: '', 
+            user: {}, 
             email: '', 
             valid: '',
             message: '',
@@ -25,16 +25,15 @@ class Login extends React.Component{
     onCheck = async e => {
         e.preventDefault();
         const user = await getUsersById(this.state.email, this.state.password);
-        console.log('user', user)
-        if(user === ''){
+        if(!user){
             this.setState({
                 valid: "notValid",
-                message: "Invalid email or password"
+                message: 'Invalid email or password'
             })
-        } else if(user.length === 30){
+        }else if(user.length === 30){
             this.setState({
                 valid: "notValid",
-                message: "Invalid email or password"
+                message: 'Email or password are required'
             })
         } else {
             this.setState({

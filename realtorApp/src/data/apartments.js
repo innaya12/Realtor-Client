@@ -1,6 +1,8 @@
 import fetcher from './fetcher';
 
 const addApartmentToDB = async (user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image) => {
+    console.log("adding apartment")
+    console.log(user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image)
     console.log("added apartment to db")
     console.log("main_image inside data",main_image)
     try{

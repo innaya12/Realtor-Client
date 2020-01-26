@@ -11,9 +11,7 @@ class AddApartment extends React.Component {
         super(props);
         this.state = {
             user: null,
-            files: null,
             apartment: null,
-            file_name: '',
             valid: '',
             message: '',
             price : '',
@@ -22,7 +20,7 @@ class AddApartment extends React.Component {
             number_of_bath: '', 
             sqft: '',
             description: '',
-            temp_main_image: null,
+            image: '',
             cities: [],
             city_id: '',
             country: '',
@@ -32,15 +30,18 @@ class AddApartment extends React.Component {
 
     componentDidMount(){
         let user = Cookies.get();
-        user = JSON.parse(user.auth)
-        this.setState({
-            user_id: user.id
-        })
+        if (Object.entries(user).length !== 0){
+            user = JSON.parse(user.auth)
+            this.setState({
+                user_id : user.id
+            })
+        }
     }
 
     fileUploadHandler = () => {
         const fd = new FormData();
-        fd.append('files', this.state.file_name)
+        console.log("this.state.image", this.state.image)
+        fd.append('image', this.state.image)
         this.sendingFiles(fd);
     }
 
@@ -48,9 +49,6 @@ class AddApartment extends React.Component {
         try {
             const uploadImage = await uploadImages(fd);
             console.log("uploadImage",uploadImage)
-            this.setState({
-                files: uploadImage
-            })
         } catch(error){
             console.log(error)
         }
@@ -58,9 +56,11 @@ class AddApartment extends React.Component {
   
     onCheck = async e => {
         e.preventDefault();
-        const {user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, temp_main_image
+        const {user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, image
         } = this.state
-        let main_image = 'images/apartment/' + temp_main_image
+        console.log("name of image", image.name)
+        let main_image = 'images/apartment/' + image.name
+        console.log("user_id", user_id)
         const apartment = await addApartmentToDB(user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image)
         this.setState({ 
             apartment
@@ -82,9 +82,10 @@ class AddApartment extends React.Component {
     handleChange = (e) => {
         e.preventDefault();
         let {name, value} = e.target;
-        if(name === "temp_main_image"){  
+        if(name === "image"){  
+            console.log("e.target.files[0]",e.target.files[0])
             this.setState({
-                temp_main_image: e.target.files[0].name
+                image: e.target.files[0]
             })
         }else if(name === "country"){        
             this.filterCity(value);
@@ -100,18 +101,17 @@ class AddApartment extends React.Component {
         const mainStyle = {width:"1000px", height:"450px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", right:"500px"};
         const inputWrapper = {paddingTop: "20px" };
         const inputStyle = {borderRadius: "5px", width: "90%", fontSize: "15px"};
-        // const {message, valid, apartment} = this.state;
-        console.log("user", this.state.user)
+        const {message, valid, apartment} = this.state;
+        // console.log("user", this.state.user)
         return(
             <div className={"addApartment"} style={{position: "relative"}}>            
                 <div className={"container-fluid"}>                  
                 <div style={mainStyle} className={"d-3 d-lg-inline col-md-offset-4 regForm"}>
                     <div className={"row"}>
+                            <div className={"justify-content-between"} style={{paddingLeft: "40px"}}>
                             <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Add Apartment</h1>
                             <p className={"wrap-text-div"}>
                             Currently you can add aparatments only in Israel </p>
-
-                            <div className={"justify-content-between"}>
                             <div className={"col-4 col-md-6"} style={inputWrapper}>
                                 <input type={"text"} className={"form-control"} 
                                     placeholder={"address"}
@@ -149,7 +149,7 @@ class AddApartment extends React.Component {
                             {/* <UploadImage handleChange={this.handleChange}  
                                         main_image={this.state.main_image}/> */}
                             <div className={"d-flex col-4 col-md-5"} style={inputWrapper}>
-                                <input type="file" onChange={this.handleChange} name={"temp_main_image"} style={{display:"none"}} ref={fileInput => this.fileInput = fileInput}/>
+                                <input type="file" onChange={this.handleChange} name={"image"} style={{display:"none"}} ref={fileInput => this.fileInput = fileInput}/>
                                 <button  style={{backgroundColor: "#ffffff"}} onClick={() =>this.fileInput.click()}>Pick Image</button>
                                 <button style={{backgroundColor: "#ffffff"}} onClick={this.fileUploadHandler}>Upload</button>
                             </div>

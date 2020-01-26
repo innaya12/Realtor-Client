@@ -8,7 +8,7 @@ class Signup extends React.Component {
         this.state = {
             valid: '',
             message: '',
-            user: '', 
+            user: {} , 
             firstName : '',
             lastName: '',
             email: '', 
@@ -29,15 +29,15 @@ class Signup extends React.Component {
         e.preventDefault();
         const {firstName, lastName,email, password, phone} = this.state
         const user = await addUserToDB(firstName, lastName,email, password, phone);
-        if(user.data.length === 23){
+        if(user === undefined){
             this.setState({
                 valid: "notValid",
-                message: 'all fields are required'
+                message: 'One or more of the inputs is invalid!'
             })
-        } else if(user.data.length === 37){
+        }else if(user.data.length === 23){
             this.setState({
                 valid: "notValid",
-                message: 'one or more of the inputs is invalid!'
+                message: 'All fields are required'
             })
         } else {
             this.setState({
@@ -46,6 +46,7 @@ class Signup extends React.Component {
             }, ()=>{
                 this.props.history.replace("/")
             })
+    
         }
     };
     
