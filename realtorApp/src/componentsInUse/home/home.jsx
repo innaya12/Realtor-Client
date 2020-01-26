@@ -92,7 +92,7 @@ class Home extends React.Component {
                         }
                     </div>
                 </div>
-                <div className={"container part3 padding"}>
+                {/* <div className={"container part3 padding"}>
                     <h2>What's happening in San Fransisco, CA</h2>
                     <div className={"row wrapper justify-content-around align-items-center"}>
                         <div className={"col-6 col-lg columns"}>
@@ -116,7 +116,7 @@ class Home extends React.Component {
                             <p>Price Reduced</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className={"part4"}>
                     <p> Trends</p>
                     <h2> Live Out a Fall Fantasy in 1 of These 7 Homes Positioned for Prime Leaf Peeing</h2>

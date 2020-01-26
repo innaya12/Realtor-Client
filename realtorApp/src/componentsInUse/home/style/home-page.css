@@ -83,7 +83,7 @@ input {
   -o-transition: background-color .2s;
   transition: background-color .2s; }
 
-.after-header a button {
+.after-header button a {
   text-decoration: none;
   color: red; }
 
@@ -93,12 +93,6 @@ input {
 .after-header button:hover {
   cursor: pointer;
   background-color: lightgray; }
-  @media only screen and (max-width: 800px) {
-    header {
-      margin-bottom: -1px;  
-    }
-  }
-
 
 .part1 {
   background-image: url("../images/main_image.PNG");
@@ -126,17 +120,15 @@ input {
   padding-right: 10px;
   list-style: none; }
 
-.menu a li {
+.menu li a {
   white-space: nowrap;
   text-decoration: none;
   color: #FFFFFF;
   font-size: 14px;
   font-weight: bold;
-  border-bottom: 2px transparent solid;
-  padding: 6px; 
-}
+  padding: 6px; }
 
-.menu a li:hover {
+.menu li a:hover {
   cursor: pointer;
   border-bottom: 2px red solid; }
 
@@ -159,7 +151,7 @@ input {
 .part1 a .red-button {
   width: 100px; }
 
-a  .red-button {
+.red-button {
   display: inline-block;
   height: 55px;
   color: white;
@@ -303,6 +295,7 @@ a  .red-button {
   font-size: 28px; }
 
 .part4 {
+  margin: 30px 0;
   background-image: url("../images/forest.jpg");
   height: 500px;
   background-size: cover;
@@ -330,14 +323,14 @@ a  .red-button {
 .part4 p {
   font-size: 20px; }
 
-.part4 a button {
+.part4 button {
   font-size: 16px;
   padding: 10px 24px;
   background-color: transparent;
   border-radius: 30px;
   border: 1.2px white solid; }
 
-.part4 a button {
+.part4 button a {
   text-decoration: none;
   color: white; }
 
@@ -417,7 +410,7 @@ a  .red-button {
   font-size: 18px;
   margin: 10px 0px 20px; }
 
-a .pre-approved-button {
+.pre-approved-button {
   white-space: nowrap;
   padding: 10px 24px;
   background-color: #D92228;
@@ -464,7 +457,7 @@ a .pre-approved-button {
   cursor: pointer;
   background-color: darkred; }
 
-a #button-icon-search {
+#button-icon-search {
   font-weight: bold;
   width: 14%;
   font-size: 22px;
@@ -495,15 +488,7 @@ a #button-icon-search {
 .part8-wrap {
   text-align: center;
   border-bottom: 1px solid gray;
-  padding: 40px 0; 
-}
-
-
-@media only screen and (max-width: 800px) {
-  .part8-wrap{
-    display: none;  
-  }
-}
+  padding: 30px 0; }
 
 .bottom1 ul {
   text-align: left;
@@ -543,14 +528,10 @@ a #button-icon-search {
   padding: 10px 0; }
 
 .end1-wrap {
-  background-color: #333333;
-  padding: 20px 0;
-
- }
+  background-color: #333333; }
 
 .end2-wrap {
-  background-color: #333333; 
-}
+  background-color: #333333; }
 
 .end2 {
   background-color: #3b3b3b; }
