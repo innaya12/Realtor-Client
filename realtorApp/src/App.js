@@ -11,8 +11,8 @@ import './componentsInUse/home/style/home-page.css';
 import './componentsInUse/gallery/singleApratment.css';
 import Form from './componentsNotInUse/form/form'
 import Login from './componentsInUse/login/loginForm';
-import PageHome from "./componentsInUse/pages/page-home";
-import PageGallery from "./componentsInUse/pages/page-gallery"
+import PageHome from "./componentsInUse/pages/home-page";
+import PageGallery from "./componentsInUse/pages/gallery-page"
 import Signup from './componentsInUse/login/signup'
 import SingleApartment from './componentsInUse/gallery/singleApartment'
 import AddApartment from './componentsInUse/apartment/AddApartment'

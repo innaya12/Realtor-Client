@@ -1,9 +1,11 @@
 import fetcher from './fetcher';
 
-const addApartmentToDB = async (address, price, number_of_room, number_of_bath, sqft, description, main_image) => {
+const addApartmentToDB = async (user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image) => {
     console.log("added apartment to db")
+    console.log("main_image inside data",main_image)
     try{
-        const add = await fetcher.post('/addapartment' , {address, price, number_of_room, number_of_bath, sqft, description, main_image});
+        const add = await fetcher.post('/addapartment' , {user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image});
+        console.log("after add")
         return add;
     }catch(error){
         console.log(error)
@@ -24,7 +26,7 @@ const getApartmentByID = async (query) => {
         const {data} = await fetcher.get(`/apartments/${query}`);
         return data[0];
     }catch(error){
-        console.log('Cant get apartments');
+        console.log("Can't get apartments");
     }
 }
 const getFilterApartments = async (query) => {
@@ -32,27 +34,11 @@ const getFilterApartments = async (query) => {
         const {data} = await fetcher.get(`/apartments/${query}`);
         return data;
     }catch(error){
-        console.log('Cant get apartments');
+        console.log("Can't get apartments");
     }
 }
 
 export {getApartment, getFilterApartments, addApartmentToDB, getApartmentByID};
-
-
-
-// const axios = require('axios');
-
-
-// const addApartmentToDB = (handleSuccess,address, price, number_of_room, number_of_bath, sqft, description, main_image) => {
-//     console.log("here")
-//     axios.post(`http://localhost:8000/addapartment`, {address, price, number_of_room, number_of_bath, sqft, description, main_image})
-//     .then(success => {
-//         handleSuccess(success.data)
-//     }).catch(error => console.log(error))
-// }
-
-
-
 
 
 // fake data for future test - to active remove '1' from name

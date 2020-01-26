@@ -8,6 +8,7 @@ class Filter extends React.Component {
             countries: '', 
         };
     }
+// for future me - put reset button  
 
     async componentDidMount() {
         try{

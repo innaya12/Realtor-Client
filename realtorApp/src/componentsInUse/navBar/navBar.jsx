@@ -7,16 +7,20 @@ class NavBar extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: '',
+            user: {},
             activeItem: -1
         }
     }
 
     componentDidMount(){
-        let user = Cookies.get('auth');
-        this.setState({
-            user 
-        })
+        let user = Cookies.get();
+        console.log("get from coolies", Object.entries(user).length !== 0)
+        if (Object.entries(user).length !== 0){
+            user = JSON.parse(user.auth);
+            this.setState({
+                user 
+            })
+        }
     }
 
     changeActiveItem = (index) => {
@@ -28,7 +32,9 @@ class NavBar extends React.Component {
 
     render() {
         const {user} = this.state
-        // console.log("user", this.state.user.length !== 0)
+        console.log("user", user)
+
+        console.log("condition", Object.entries(user).length === 0)
         return (
             <div id={'header'} className={"container-fluid header"}>
                 <div className={"row underheader flex-nowrap justify-content-between align-items-center"}>
@@ -62,21 +68,14 @@ class NavBar extends React.Component {
                             </Link>
                         </div>
                     </div>
-                    <div className={"d-none nv d-lg-flex"}>
-                        {/* <ul className={"nav-bar-list nav-bar d-flex"}>
-                            {navBar.map((navbar, i) => <BuildNavbar label={navbar.label}
-                                                                    changeActiveItem={this.changeActiveItem}                                                                    index={i}
-                                                                    key={i}/>
-                            )}
-
-                        </ul> */}
-                    </div>
                     <div className={"col-auto d-flex justify-content-between"}>
-                        {user ? 
+                        {Object.entries(user).length !== 0 ? 
+                      
+                     
                         <ul className={"nav-bar-list nav-bar d-flex "}>
-                            {/* <li >
-                                <p>{'Wellcome' + user.first_name} </p>
-                            </li> */}
+                            <li >
+                                <p>Wellcome {user.first_name} </p>
+                            </li>
                             <li>
                                 <Link to="/addapartment">
                                     <p>Add Apartment</p>
