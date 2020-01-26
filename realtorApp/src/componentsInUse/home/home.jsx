@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'js-cookie'
 import {Link} from "react-router-dom";
 import BuildApartment from "../gallery/buildApartment";
 
@@ -7,14 +8,30 @@ class Home extends React.Component {
         super(props);
         this.state = {
             apartmentArray: this.props.apartmentArray,
-            loading: true,
             randomArray: [],
+            user : {}
         };
+    //    this.checkIfUser();
     }
-
+    // checkIfUser(){
+    //     let user = Cookies.get();
+    //     if (Object.entries(user).length !== 0){
+    //         user = JSON.parse(user.auth);
+    //         this.setState({
+    //             user
+    //         })
+    //     }
+    // }
+    
     componentDidMount() {
         this.handleApartmentSuccess(this.state.apartmentArray.apartment);
-    };
+        let user = Cookies.get();
+        if (Object.entries(user).length !== 0){
+            user = JSON.parse(user.auth);
+            this.setState({
+                user
+            })
+        }    };
 
     handleApartmentSuccess = (data) => {
         this.setState({
@@ -35,14 +52,20 @@ class Home extends React.Component {
     };
 
     render() {
+        const {user} = this.state;
+        // console.log("user", user)
+        // console.log("condition", Object.entries(user).length === 0 )
+
         return (
             <header className={"header"}>
                 <div className={"after-header"}>
                     <img alt={""} src={require("./images/GreenV.png")}/>
                     <p>Be Ready to Buy<span className={"d-none d-md-inline"}>... How Much Can You Borrow?</span></p>
+                    {Object.entries(user).length === 0 &&        
                     <Link to="/signup">
                         <button>Get Pre-Approved</button>
                     </Link>
+                    }
                 </div>
                 <div className={"container-fluid part1"}>
                     <div className={"container"}>
@@ -120,17 +143,22 @@ class Home extends React.Component {
                 <div className={"part4"}>
                     <p> Trends</p>
                     <h2> Live Out a Fall Fantasy in 1 of These 7 Homes Positioned for Prime Leaf Peeing</h2>
+                    {Object.entries(user).length === 0 &&        
                     <Link to="/login">
                         <button>Log In</button>
                     </Link>
+                    }
                 </div>
                 <div className={"part8-wrap"}>
                     <div className={"container"}>
                         <div className={"row"}>
                             <div className={"col-6 col-md-12"}>
+                            {Object.entries(user).length === 0 &&   
+
                                 <Link to="/login">
                                     <img alt={""} src={require("./images/red_banner.jpg")}/>
                                 </Link>
+                            }
                             </div>
                         </div>
                     </div>

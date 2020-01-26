@@ -6,20 +6,14 @@
   margin-right: auto;
   margin-left: 20px; }
 
-.nav-bar {
-  padding: 0;
-  color: black;
-  margin: 0;
-  list-style: none; }
-
-.nav-bar a {
+.nav-bar li a {
   padding: 0;
   color: black;
   margin: 0;
   list-style: none; }
 
 .nav-bar li {
-  padding: 10px 0;
+  padding: 10px 4px;
   font-size: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,9 +24,6 @@
   margin-right: 10px;
   border-bottom: 2px transparent solid; }
 
-.nav-bar ul li img {
-  width: 30px; }
-
 .nav-bar li p {
   margin: 0; }
 
@@ -40,18 +31,36 @@
   cursor: pointer;
   border-bottom-color: red;
   color: red;
-  text-decoration: none; 
-}
+  text-decoration: none; }
 
-.nav-bar li:hover .hidden-left-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
+.nav-bar .noHover:hover {
+  cursor: default;
+  border-bottom-color: transparent;
+  color: black;
+  text-decoration: none; }
 
-.nav-bar li:hover .hidden-right-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
+.hidden-left-bar {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 20px;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  color: black;
+  background-color: white;
+  z-index: 1111; }
+
+.hidden-left-bar div {
+  padding: 3px 0; }
+
+.hidden-left-bar p {
+  font-weight: bold;
+  padding: 4px 0; }
+
+.hidden-left-bar .hidden-list a {
+  color: black; }
 
 .hidden-right-bar {
   border: 1px gray solid;
@@ -71,9 +80,9 @@
   display: none;
   background-color: white;
   position: absolute;
-  right: 211px;
-  top: 45px;
-  width: 300px;
+  right: 2px;
+  top: 51px;
+  width: 200px;
   padding: 15px; }
 
 .middle-bar {
@@ -88,15 +97,11 @@
   text-decoration: none;
   color: black; }
 
-.middle-bar-text {
-  padding: 5px;
+.hidden-middle-bar .middle-bar-img li {
   color: black;
   font-size: 11px;
-  font-weight: normal; }
-
-.hidden-middle-bar .middle-bar-img img {
-  padding: 2px;
-  width: 50px; }
+  font-weight: normal;
+  padding: 5px; }
 
 .nav-bar li:hover .hidden-middle-bar {
   -webkit-box-pack: center;
@@ -110,15 +115,16 @@
   -ms-flex-direction: column;
   flex-direction: column; }
 
-  
 .fa-mobile-alt {
   font-size: 22px; }
 
-.inner-burger {
-  width: 24px;
-  margin: 4px;
-  height: 2px;
-  background-color: black; }
-
 .burger:hover, .logo:hover {
   cursor: pointer; }
+
+header a .lefty {
+  font-size: 28px;
+  margin: 5px 10px 0 10px;
+  color: black; }
+
+header .decorationNone:hover {
+  text-decoration: none; }

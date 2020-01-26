@@ -46,7 +46,7 @@ class RegForm extends React.Component{
                             fontSize: "20px",
                             marginTop: "10px"
                         }}
-                        type={"button"}> Log In
+                        type={"button"}> Sign Up
                 </button>
             </div>
 

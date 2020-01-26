@@ -14,7 +14,6 @@ class NavBar extends React.Component {
 
     componentDidMount(){
         let user = Cookies.get();
-        console.log("get from coolies", Object.entries(user).length !== 0)
         if (Object.entries(user).length !== 0){
             user = JSON.parse(user.auth);
             this.setState({
@@ -31,21 +30,11 @@ class NavBar extends React.Component {
     };
 
     render() {
-        const {user} = this.state
-        console.log("user", user)
-
-        console.log("condition", Object.entries(user).length === 0)
+        const {user} = this.state;
         return (
             <div id={'header'} className={"container-fluid header"}>
                 <div className={"row underheader flex-nowrap justify-content-between align-items-center"}>
                     <div className="row align-items-center">
-                        {/* <Link to={"/"}>
-                            <div className={"col-auto d-lg-none burger"}>
-                                <div className={"inner-burger"}/>
-                                <div className={"inner-burger"}/>
-                                <div className={"inner-burger"}/>
-                            </div>
-                        </Link> */}
                         <div className={"col-auto logo"}>
                             <Link to={"/"}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="156" height="29"
@@ -70,16 +59,32 @@ class NavBar extends React.Component {
                     </div>
                     <div className={"col-auto d-flex justify-content-between"}>
                         {Object.entries(user).length !== 0 ? 
-                      
-                     
-                        <ul className={"nav-bar-list nav-bar d-flex "}>
-                            <li >
-                                <p>Wellcome {user.first_name} </p>
-                            </li>
-                            <li>
-                                <Link to="/addapartment">
-                                    <p>Add Apartment</p>
-                                </Link>
+                        <ul className={"nav-bar-list nav-bar d-flex"}>
+                            <li  className={"d-flex "}>
+                                <img src="https://img.icons8.com/pastel-glyph/64/000000/christmas-boy--v1.png" style={{width:"30px"}}></img>
+                                <div className={"hidden-middle-bar"}>
+                                    <p>Wellcome {user.first_name}!</p>
+                                    <div className={"middle-bar"}>
+                                        <div className={"middle-bar-img"}>
+                                            <ul>
+                                                <li>
+                                                    <Link to="/addapartment">
+                                                        <p>Add-Apartment</p>
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className={"middle-bar"}>
+                                        <div className={"middle-bar-img"}>
+                                            <ul>
+                                                <li>
+                                                    <p>Log out</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                         :

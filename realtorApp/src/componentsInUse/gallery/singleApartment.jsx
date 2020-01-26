@@ -14,7 +14,7 @@ class SingleApartment extends React.Component {
         this.state = {
             apartment: '',
             images: '',
-            user:''
+            user: {}
         };
     }
 
@@ -50,15 +50,8 @@ class SingleApartment extends React.Component {
                         <div className={"container"}>
                             <div className={"row flex-nowrap "}>
                                 <div className={"row align-items-center"}>
-                                    <Link to={"/"}>
-                                        <div className={"col-auto d-lg-none burger"}>
-                                            <div className={"inner-burger"}/>
-                                            <div className={"inner-burger"}/>
-                                            <div className={"inner-burger"}/>
-                                        </div>
-                                    </Link>
-                                    <Link to={"/"}>
-                                    <div className={"col-auto logo d-none d-lg-flex"}>
+                                    <Link to={"/"} className={"decorationNone"}>
+                                    <div className={"col-auto logo d-lg-flex"}>
                                         <i className={"fa fa-angle-left lefty"} aria-hidden={"true"}/>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="156" height="29"
                                                     viewBox="0 0 445 82">
@@ -94,7 +87,7 @@ class SingleApartment extends React.Component {
                                 <div className={"col-auto d-flex justify-content-between"}>
                                 {Object.entries(user).length !== 0 ? 
                                 <ul className={"nav-bar-list nav-bar d-flex "}>
-                                    <li >
+                                    <li  className={"noHover"}>
                                         <p>Wellcome {user.first_name} </p>
                                     </li>
                                 </ul>
@@ -125,7 +118,7 @@ class SingleApartment extends React.Component {
                             <Carousel apartment={apartment}
                                     images = {images}/>
                         }
-                        {!user && 
+                        {Object.entries(user).length === 0 &&        
                         <Link to="/signup">
                             <RegForm type={1} state={{zIndex: "1000"}}/>
                         </Link>
@@ -183,7 +176,7 @@ class SingleApartment extends React.Component {
                                     </a>
                                 </div>
                             </div>
-                            <div>
+                            {/* <div>
                                 <div
                                     className={"qv-snapshot-map-btn js-hide-ajax-fail pos-relative qv-fullmap-btn-wrapper qv-map-btn-v3 graphical-uplift"}>
                                     <a href={"/"} className={"display-block map-btn fullmap-view"}
@@ -194,13 +187,13 @@ class SingleApartment extends React.Component {
                                                 className={""} style={{width: "300px", height: "100px"}}/>
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className={"text-center"} style={{position: "relative", marginBottom: "60px", marginTop: "60px"}}>
                         <img alt={''} src={require("./images/other.jpg")}
                                 style={{width: "1000px", height: "550px", marginTop: "50px"}}/>
-                    {!user && 
+                    {Object.entries(user).length === 0 &&        
                         <Link to="/signup">
                             <RegForm type={2}/>
                         </Link>

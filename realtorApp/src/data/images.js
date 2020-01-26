@@ -5,9 +5,10 @@ const uploadImages = async (fd) =>{
         const data = await fetcher.post('/uploadimages', fd);
         return data
     }catch(error){
-        throw new Error('Cant upload images')
+        throw new Error("Can't upload images")
     }
 }
+
 const getImagesByApartmentId = async (apartmentId) => {
     try {
         const {data} = await fetcher.get(`/images/${apartmentId}`);

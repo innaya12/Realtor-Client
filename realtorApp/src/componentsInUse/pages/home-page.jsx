@@ -8,8 +8,7 @@ class PageHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            apartmentArray: [],
-            // loading: true
+            apartmentArray: []
         };
     }
     async componentDidMount() {
