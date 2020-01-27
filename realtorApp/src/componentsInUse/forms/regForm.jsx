@@ -2,7 +2,7 @@ import React from "react";
 
 class RegForm extends React.Component{
     render() {
-        const {type} = this.props; // 1 = top forms; 2 = bottom
+        const {type} = this.props; // 1 = top forms; 2 = bottom 
         const mainStyle = type === 1 ?
             {width:"260px", height:"310px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .4)", top: "160px", left:"510px"} :
             {width:"360px", height:"390px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", left:"-180px"};
@@ -53,9 +53,6 @@ class RegForm extends React.Component{
         )
     }
 }
-
-// let style1 ={backgroundColor: "rgba('65', '170', '162', '.4')",left:"390px", top:"160px", height:"310px", width:"260px"};
-// let style2 ={backgroundColor: "rgba('65', '170', '162', '.9')", left:"-280px", top:"170px", height:"440px", width: "360px"};
 
 
 

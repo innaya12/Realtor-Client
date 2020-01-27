@@ -54,8 +54,6 @@ class Carousel extends React.Component{
                 </a>
                 <div className={"position-absolute"} style={{bottom: "10px", left: "8px"}}>
                     <p className={"propertyType greenTitle"}>{apartment.description}</p>
-                    {/* <p className={"propertyType black mx-3"}>{apartment.propertyType}</p>
-                    <p className={"propertyType grayTitle"}>{apartment.title}</p> */}
                 </div>
             </div>
         )

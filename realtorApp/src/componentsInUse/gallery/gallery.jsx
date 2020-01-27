@@ -3,6 +3,8 @@ import BuildApartment from "./buildApartment";
 import Filter from "../forms/filter";
 import {getFilterApartments} from '../../data/apartments'
 import {getCitiesByCountry} from '../../data/citiesByCountry'
+import './style/gallery.css'
+import './style/style.css'
 
 class Gallery extends React.Component {
     constructor(props) {
