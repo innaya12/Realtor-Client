@@ -1,0 +1,23 @@
+.addApartment{
+    margin-top: 80px;
+}
+
+.addApartment h1 {
+    font-size: 27px;
+}
+
+.addApartment p a {
+    font-size: 12px;
+}
+
+.addApartment .regForm {
+    text-align: "center";
+    border-radius: "30px";
+}
+
+.button-search {
+    flex-direction: column;
+    height: 39px;
+    font-size: 20px !important;
+    width: 40px !important;
+}

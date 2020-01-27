@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {addUserToDB} from '../../data/users'
+import './style/loginStyle.css';
 
 class Signup extends React.Component {
     constructor(props) {
@@ -59,60 +60,62 @@ class Signup extends React.Component {
     };
 
     render() {
-        const mainStyle = {width:"360px", height:"390px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)", top: "120px", left:"0px"};
-        const inputWrapper = {paddingTop: "10px"};
-        const inputStyle = {borderRadius: "0px", width: "90%", fontSize: "14px"};
+        const mainStyle = {margin: "auto", width:"370px", height:"400px", borderRadius: "30px", textAlign: "center", backgroundColor: "rgba(65, 170, 162, .9)"};
+        const inputWrapper = {paddingTop: "12px"};
+        const inputStyle = {borderRadius: "5px", width: "90%", fontSize: "14px", paddingLeft:"10px"};
         const {message, valid} = this.state;
 
         return(
-            <main className={"part-2 paddingPage singlePage"} style={{position: "relative"}}>
-                <div className={"container"}>
-                    <div style={mainStyle} className={"d-3 d-lg-inline col-md-offset-4 regForm"}>
-                        <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Sign Up</h1>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            {valid === "notValid" &&
-                                <p className={"wrap-text-div"} style={{color:"#8B0000", fontSize:"14px", fontWeight:"bold"}}>
-                                    {message}</p>
-                            }
+            <main className={"container-fluid loginPage"}>
+                <div className={"row"}>
+                    <div className={"col-xs-6 col-md-12"}>
+                        <div style={mainStyle} className={"regForm"}>
+                            <h1 style={{textAlign: "center", paddingTop: "30px", color: "#ffffff"}}>Sign Up</h1>
+                            <div className={"col-sm-12"} style={inputWrapper}>
+                                {valid === "notValid" &&
+                                    <p className={"wrap-text-div"} style={{color:"#8B0000", fontSize:"14px", fontWeight:"bold"}}>
+                                        {message}</p>
+                                }
 
-                            <input type={"text"} className={"form-control"} 
-                                placeholder={"First Name"}
-                                name={"firstName"}
-                                style={inputStyle} onChange={this.handleChange}/>
+                                <input type={"text"} className={"form-control"} 
+                                    placeholder={"First Name"}
+                                    name={"firstName"}
+                                    style={inputStyle} onChange={this.handleChange}/>
+                            </div>
+                            <div className={"col-sm-12"} style={inputWrapper}>
+                                <input type={"text"} className={"form-control"} 
+                                    placeholder={"Last Name"}
+                                    name={"lastName"}
+                                    style={inputStyle} onChange={this.handleChange}/>
+                            </div>
+                            <div className={"col-sm-12"} style={inputWrapper}>
+                                <input type={"email"} className={"form-control"} placeholder={"Email"}
+                                    name={"email"} style={inputStyle} onChange={this.handleChange}/>
+                            </div>
+                            <div className={"col-sm-12"} style={inputWrapper}>
+                                <input type={"text"} className={"form-control"} placeholder={"Phone"}
+                                    name={"phone"}
+                                    style={inputStyle} onChange={this.handleChange}/>
+                            </div>
+                            <div className={"col-sm-12"} style={inputWrapper}>
+                                <input type={"text"} className={"form-control"} placeholder={"password"}
+                                    name={"password"}
+                                    style={inputStyle} onChange={this.handleChange}/>
+                            </div>
+                            <button className={"col-md-4 col-md-offset-4 btn"}
+                                    style={{
+                                        backgroundColor: "#ffffff",
+                                        color: "#626a69",
+                                        fontSize: "18px",
+                                        marginTop: "15px"
+                                    }}
+                                    type={"button"} onClick={this.onCheck}> Sign Up
+                            </button>
+                                <p style={{color: "rgba(65, 170, 162, .9)"}}>.</p>
+                            <Link to="/login">
+                                <p className={"noUnderline"}>Registered? Log In</p>
+                            </Link>
                         </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} 
-                                placeholder={"Last Name"}
-                                name={"lastName"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"email"} className={"form-control"} placeholder={"Email"}
-                                name={"email"} style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"Phone"}
-                                name={"phone"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <div className={"col-sm-12"} style={inputWrapper}>
-                            <input type={"text"} className={"form-control"} placeholder={"password"}
-                                name={"password"}
-                                style={inputStyle} onChange={this.handleChange}/>
-                        </div>
-                        <button className={"col-md-4 col-md-offset-4 btn"}
-                                style={{
-                                    backgroundColor: "#ffffff",
-                                    color: "#626a69",
-                                    fontSize: "20px",
-                                    marginTop: "10px"
-                                }}
-                                type={"button"} onClick={this.onCheck}> Sign Up
-                        </button>
-                            <p>.</p>
-                        <Link to="/login">
-                            <p>Registered? Log In</p>
-                        </Link>
                     </div>
                 </div>
             </main>

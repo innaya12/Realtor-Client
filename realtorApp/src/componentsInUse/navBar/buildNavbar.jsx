@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import  './style/nav-bar.css';
 
 class BuildNavbar extends React.Component {
 

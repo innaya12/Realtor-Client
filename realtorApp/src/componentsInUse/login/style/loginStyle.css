@@ -1,0 +1,21 @@
+.loginPage{
+    margin-top: 80px;
+}
+
+.loginPage p {
+    /* padding-top: 10px; */
+    font-size: 12px;
+}
+
+.loginPage h1 {
+    font-size: 27px;
+}
+
+.loginPage .regForm a:hover{
+    text-decoration: none;
+}
+
+.loginPage .regForm a .noUnderline{
+    font-size: 12px;
+    color: white;
+}

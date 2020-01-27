@@ -1,7 +1,7 @@
 import React from 'react';
 import Cookies from 'js-cookie'
 import {Link} from "react-router-dom";
-import  './nav-bar.css';
+import  './style/nav-bar.css';
 
 class NavBar extends React.Component {
     constructor() {
@@ -28,9 +28,18 @@ class NavBar extends React.Component {
             activeItem: activeItem === index ? -1 : index,
         })
     };
+    
+    logOut = () =>{
+        console.log("clicked")
+        Cookies.remove('auth', {path:'/'});
+        this.setState({
+            user: {}
+        })
+    }
 
     render() {
         const {user} = this.state;
+        const hrStyle = {color: "lightgray", height: 1, width: 160}
         return (
             <div id={'header'} className={"container-fluid header"}>
                 <div className={"row underheader flex-nowrap justify-content-between align-items-center"}>
@@ -61,15 +70,16 @@ class NavBar extends React.Component {
                         {Object.entries(user).length !== 0 ? 
                         <ul className={"nav-bar-list nav-bar d-flex"}>
                             <li  className={"d-flex "}>
-                                <img src="https://img.icons8.com/pastel-glyph/64/000000/christmas-boy--v1.png" style={{width:"30px"}}></img>
+                                <img alt={"preson-icon"} src="https://img.icons8.com/pastel-glyph/64/000000/christmas-boy--v1.png" style={{width:"30px"}}></img>
                                 <div className={"hidden-middle-bar"}>
                                     <p>Wellcome {user.first_name}!</p>
                                     <div className={"middle-bar"}>
                                         <div className={"middle-bar-img"}>
+                                        <hr style={hrStyle}/>
                                             <ul>
                                                 <li>
                                                     <Link to="/addapartment">
-                                                        <p>Add-Apartment</p>
+                                                        <h6>Add-Apartment</h6>
                                                     </Link>
                                                 </li>
                                             </ul>
@@ -77,8 +87,9 @@ class NavBar extends React.Component {
                                     </div>
                                     <div className={"middle-bar"}>
                                         <div className={"middle-bar-img"}>
+                                        <hr style={hrStyle}/>
                                             <ul>
-                                                <li>
+                                                <li onClick={this.logOut}>
                                                     <p>Log out</p>
                                                 </li>
                                             </ul>

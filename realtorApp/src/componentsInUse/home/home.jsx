@@ -2,6 +2,7 @@ import React from 'react';
 import Cookies from 'js-cookie'
 import {Link} from "react-router-dom";
 import BuildApartment from "../gallery/buildApartment";
+import './style/home-page.css';
 
 class Home extends React.Component {
     constructor(props) {
@@ -11,17 +12,7 @@ class Home extends React.Component {
             randomArray: [],
             user : {}
         };
-    //    this.checkIfUser();
-    }
-    // checkIfUser(){
-    //     let user = Cookies.get();
-    //     if (Object.entries(user).length !== 0){
-    //         user = JSON.parse(user.auth);
-    //         this.setState({
-    //             user
-    //         })
-    //     }
-    // }
+    }   
     
     componentDidMount() {
         this.handleApartmentSuccess(this.state.apartmentArray.apartment);
@@ -31,7 +22,8 @@ class Home extends React.Component {
             this.setState({
                 user
             })
-        }    };
+        }    
+    };
 
     handleApartmentSuccess = (data) => {
         this.setState({
@@ -53,8 +45,6 @@ class Home extends React.Component {
 
     render() {
         const {user} = this.state;
-        // console.log("user", user)
-        // console.log("condition", Object.entries(user).length === 0 )
 
         return (
             <header className={"header"}>
@@ -82,19 +72,16 @@ class Home extends React.Component {
                                 <Link to="/apartments">
                                     <li>BOTH</li>
                                 </Link>
-                                {/* <Link to="/apartments">
-                                    <li className={"d-none d-md-flex"}>HOME VALUE</li>
-                                </Link> */}
                             </ul>
                             <div className={"form d-flex align-items-stretch"}>
                                 <input type={"text"} className={"d-none d-md-inline"} name={"city"} id="address"
                                        placeholder={"Address, School, City, Zip or Neighborhood"}/>
                                 <Link to="/apartments" className={"no-underline d-none d-md-inline"}>
-                                    <button className={"button-text red-button d-none d-md-inline"}>search
+                                    <button className={"red-button d-none d-md-inline"}>search
                                     </button>
                                 </Link>
                                 <Link to="/apartments" className={"d-md-none d-contents"}>
-                                    <button id={"button-icon-search"} className={"red-button d-md-none"}>
+                                    <button className={"red-button  d-md-none"}>
                                         <i className={"fab fa-sistrix"}>
                                         </i>
                                     </button>
@@ -115,31 +102,6 @@ class Home extends React.Component {
                         }
                     </div>
                 </div>
-                {/* <div className={"container part3 padding"}>
-                    <h2>What's happening in San Fransisco, CA</h2>
-                    <div className={"row wrapper justify-content-around align-items-center"}>
-                        <div className={"col-6 col-lg columns"}>
-                            <p className={"blue-font"}>1,227</p>
-                            <p>Homes for Sale</p>
-                        </div>
-                        <div className={"col-6 col-lg columns"}>
-                            <p className={"blue-font"}>389</p>
-                            <p>Open House</p>
-                        </div>
-                        <div className={"col-6 col-lg columns"}>
-                            <p className={"blue-font"}>3,087</p>
-                            <p>Recently Sold</p>
-                        </div>
-                        <div className={"col-6 col-lg columns"}>
-                            <p className={"blue-font"}>2</p>
-                            <p>Foreclosures</p>
-                        </div>
-                        <div className={"col-6 col-lg justify-content-center columns"}>
-                            <p className={"blue-font"}>85</p>
-                            <p>Price Reduced</p>
-                        </div>
-                    </div>
-                </div> */}
                 <div className={"part4"}>
                     <p> Trends</p>
                     <h2> Live Out a Fall Fantasy in 1 of These 7 Homes Positioned for Prime Leaf Peeing</h2>
@@ -153,12 +115,12 @@ class Home extends React.Component {
                     <div className={"container"}>
                         <div className={"row"}>
                             <div className={"col-6 col-md-12"}>
-                            {Object.entries(user).length === 0 &&   
+                            {/* {Object.entries(user).length === 0 &&   
 
                                 <Link to="/login">
                                     <img alt={""} src={require("./images/red_banner.jpg")}/>
                                 </Link>
-                            }
+                            } */}
                             </div>
                         </div>
                     </div>
