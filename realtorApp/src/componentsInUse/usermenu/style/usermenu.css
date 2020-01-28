@@ -1,0 +1,61 @@
+
+.hidden-middle-bar {
+    text-align: center;
+    border: 1px gray solid;
+    border-radius: 10px;
+    color: black;
+    display: none;
+    background-color: white;
+    position: absolute;
+    right: 2px;
+    top: 51px;
+    width: 120px;
+    height: 220px;
+    z-index: 99;
+  }
+  
+  .middle-bar {
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .middle-bar a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .middle-bar .middle-bar-img hr{
+    width: 100%;
+    color: black;
+  }
+  
+  .hidden-middle-bar .middle-bar-img li{
+    color: black;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 1px;
+  }
+  
+  .hidden-middle-bar .middle-bar-img li:hover {
+    border: none;
+    font-weight: bold;
+  }
+  .nav-bar li:hover .hidden-middle-bar {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.menu {
+
+}
+
+
+.menu .admin{
+
+}
+
+.menu .user{
+
+}

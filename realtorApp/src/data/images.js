@@ -1,11 +1,11 @@
 import fetcher from './fetcher';
 
-const uploadImages = async (fd) =>{
+const uploadImage = async (fd) =>{
     try {
-        const data = await fetcher.post('/uploadimages', fd);
+        const data = await fetcher.post('/uploadimages/single', fd);
         return data
     }catch(error){
-        throw new Error("Can't upload images")
+        throw new Error("Can't upload image")
     }
 }
 
@@ -18,4 +18,4 @@ const getImagesByApartmentId = async (apartmentId) => {
     }
 } 
 
-export {getImagesByApartmentId, uploadImages};
+export {getImagesByApartmentId, uploadImage};

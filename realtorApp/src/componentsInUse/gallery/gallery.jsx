@@ -4,12 +4,12 @@ import Filter from "../forms/filter";
 import {getFilterApartments} from '../../data/apartments'
 import {getCitiesByCountry} from '../../data/citiesByCountry'
 import './style/gallery.css'
-import './style/style.css'
 
 class Gallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            originalApartmentArray: this.props.apartmentArray,
             apartmentArray: this.props.apartmentArray,
             user: null,
             cities: [],
@@ -21,6 +21,16 @@ class Gallery extends React.Component {
             number_of_room: '',
             listingStatus: '',
         };
+    }
+
+    resetFunction(){
+        console.log("done")
+        console.log("or apa", this.state.originalApartmentArray)
+
+        // console.log("this.state.or", this.state.originalApartmentArray)
+        // let originalApartments = this.state.originalApartmentArray
+        // console.log("or", originalApartments)
+
     }
 
     createQuery() {
@@ -77,8 +87,8 @@ class Gallery extends React.Component {
         if(name === "country"){         
             this.filterCity(value);
         } else {
-            console.log("name", name)
-            console.log("value", value)
+            // console.log("name", name)
+            // console.log("value", value)
             this.setState({
                 [name]: value,
             }, () => {
@@ -88,17 +98,22 @@ class Gallery extends React.Component {
     };
 
     render() {
+        console.log("or apa", this.state.originalApartmentArray)
+        console.log("apa", this.state.apartmentArray)
 
         return (
             <div className={"row justify-content-between wrap-img-div"}>
                 <Filter handleChange={this.handleChange}
+                        resetFunction={this.resetFunction}
                         cities={this.state.cities}/>
-
-                {this.state.apartmentArray.length !== 0 &&
+                {this.state.apartmentArray.length !== 0 && this.state.apartmentArray.length > 1 &&
                         <p style={{marginLeft:"20px",width:"-webkit-fill-available",color: "gray",fontSize: "14px"}}>
                             Currnetly apartments are only available in Israel 
                             <br/>{this.state.apartmentArray.length} Homes</p>}
-
+                {this.state.apartmentArray.length === 1 &&
+                        <p style={{marginLeft:"20px",width:"-webkit-fill-available",color: "gray",fontSize: "14px"}}>
+                            Currnetly apartments are only available in Israel 
+                            <br/>{this.state.apartmentArray.length} Home</p>}
                 {this.state.apartmentArray.map((apartment, i) =>
                     <BuildApartment {...apartment} key={i}/>
                 )}

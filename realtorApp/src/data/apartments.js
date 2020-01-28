@@ -1,20 +1,16 @@
 import fetcher from './fetcher';
 
 const addApartmentToDB = async (user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image) => {
-    console.log("adding apartment")
     console.log(user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image)
-    console.log("added apartment to db")
-    console.log("main_image inside data",main_image)
     try{
         const add = await fetcher.post('/addapartment' , {user_id, address, city_id, price, number_of_room, number_of_bath, sqft, description, main_image});
-        console.log("after add")
         return add;
     }catch(error){
         console.log(error)
     }
 }
 
-const getApartment = async () => {
+const getApartments = async () => {
     try{
         const {data} = await fetcher.get("/apartments");
         return data;
@@ -22,7 +18,14 @@ const getApartment = async () => {
         throw new Error(`Cant get apartments`);
     }
 }
-
+const getByUserID = async (userId) => {
+    try{
+        const {data} = await fetcher.get(`/byuserid/${userId}`);
+        return data;
+    }catch(error){
+        console.log("Can't get apartments");
+    }
+}
 const getApartmentByID = async (query) => {
     try{
         const {data} = await fetcher.get(`/apartments/${query}`);
@@ -40,7 +43,11 @@ const getFilterApartments = async (query) => {
     }
 }
 
-export {getApartment, getFilterApartments, addApartmentToDB, getApartmentByID};
+export {getApartments, 
+    getFilterApartments, 
+    addApartmentToDB, 
+    getByUserID,
+    getApartmentByID};
 
 
 // fake data for future test - to active remove '1' from name

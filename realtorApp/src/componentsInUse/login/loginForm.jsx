@@ -23,6 +23,13 @@ class Login extends React.Component{
         });
     };
 
+    loginProcessDone(){
+        setTimeout(() => {
+            this.props.history.replace("/"); 
+        }, 4000)
+    }
+
+
     onCheck = async e => {
         e.preventDefault();
         const user = await getUsersById(this.state.email, this.state.password);
@@ -31,7 +38,7 @@ class Login extends React.Component{
                 valid: "notValid",
                 message: 'Invalid email or password'
             })
-        }else if(user.length === 30){
+        }else if(user === "Email or password are required"){
             this.setState({
                 valid: "notValid",
                 message: 'Email or password are required'
@@ -40,9 +47,8 @@ class Login extends React.Component{
             this.setState({
                 user,
                 valid: "valid",
-            }, ()=>{
-                this.props.history.replace("/")
-            })
+                message: `Wellcome back ${user.first_name}!`
+            }, this.loginProcessDone())
         }
     };
     
@@ -73,19 +79,28 @@ class Login extends React.Component{
                                     name={"password"}
                                     style={inputStyle} onChange={this.handleChange}/>
                             </div>
-                            <button className={"btn"}
-                                    style={{
-                                        backgroundColor: "#ffffff",
-                                        color: "#626a69",
-                                        fontSize: "16px",
-                                        marginTop: "25px"
-                                    }}
-                                    type={"button"} onClick={this.onCheck} > Log In
-                            </button>
-                            <p style={{color: "rgba(65, 170, 162, .9)"}}>.</p>
-                            <Link to="/signup">
-                                <p className={"noUnderline"}>No account? Sign Up</p>
-                            </Link>
+                            {valid === "valid" ? 
+                                <div>
+                                <p style={{color: "rgba(65, 170, 162, .9)"}}>.</p>
+                                <p style={{fontSize:"18px", fontWeight:"bold"}}>{message}</p>
+                            </div>
+                            :
+                            <div>
+                                <button className={"btn"}
+                                        style={{
+                                            backgroundColor: "#ffffff",
+                                            color: "#626a69",
+                                            fontSize: "16px",
+                                            marginTop: "25px"
+                                        }}
+                                        type={"button"} onClick={this.onCheck} > Log In
+                                </button>
+                                <p style={{color: "rgba(65, 170, 162, .9)"}}>.</p>
+                                <Link to="/signup">
+                                    <p className={"noUnderline"}>No account? Sign Up</p>
+                                </Link>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>

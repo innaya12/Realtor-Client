@@ -62,25 +62,12 @@ class Home extends React.Component {
                         <div className={"row justify-content-center align-items-center flex-column"}>
                             <h1> The Home of Home Search<sup className={"sm"}>℠</sup></h1>
                             <p className={"d-none d-md-flex"}> With the most complete source of homes for sale & real estate near you</p>
-                            <ul className={"menu row"}>
-                                <Link to="/apartments">
-                                    <li>SALE</li>
-                                </Link>
-                                <Link to="/apartments">
-                                    <li>RENT</li>
-                                </Link>
-                                <Link to="/apartments">
-                                    <li>BOTH</li>
-                                </Link>
-                            </ul>
                             <div className={"form d-flex align-items-stretch"}>
-                                <input type={"text"} className={"d-none d-md-inline"} name={"city"} id="address"
-                                       placeholder={"Address, School, City, Zip or Neighborhood"}/>
-                                <Link to="/apartments" className={"no-underline d-none d-md-inline"}>
-                                    <button className={"red-button d-none d-md-inline"}>search
+                                <Link to="/gallery" className={"no-underline d-none d-md-inline"}>
+                                    <button style={{borderRadius:"5px", padding:"11px"}}className={"red-button d-none d-md-inline"}>search
                                     </button>
                                 </Link>
-                                <Link to="/apartments" className={"d-md-none d-contents"}>
+                                <Link to="/gallery" className={"d-md-none d-contents"}>
                                     <button className={"red-button  d-md-none"}>
                                         <i className={"fab fa-sistrix"}>
                                         </i>
@@ -92,7 +79,7 @@ class Home extends React.Component {
                 </div>
                 <div className={"container part-2 padding"}>
                     <h2 className={"wrap-text-div"}>New listing in Tel Aviv, IL</h2>
-                    <Link to="/apartments">
+                    <Link to="/gallery">
                         <p>View All New Listings</p>
                     </Link>
                     <div className={"row justify-content-between wrap-img-div"}>
