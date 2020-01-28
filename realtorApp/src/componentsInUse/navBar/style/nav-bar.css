@@ -27,8 +27,12 @@
 .nav-bar li p {
   margin: 0; }
 
+.no-underline:hover {
+  text-decoration: none; }
+
 .nav-bar li:hover {
   cursor: pointer;
+  border-bottom-color: red;
   color: red;
   text-decoration: none; }
 
@@ -72,53 +76,6 @@
   position: absolute;
   right: 50px;
   top: 52px; }
-
-.hidden-middle-bar {
-  border: 1px gray solid;
-  border-radius: 10px;
-  color: black;
-  display: none;
-  background-color: white;
-  position: absolute;
-  right: 2px;
-  top: 51px;
-  width: 160px;
-  height: 160px;
-  z-index: 99; }
-
-.middle-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline; }
-
-.middle-bar a {
-  text-decoration: none;
-  color: black; }
-
-.middle-bar .middle-bar-img hr {
-  width: 100%;
-  color: black; }
-
-.hidden-middle-bar .middle-bar-img li {
-  color: black;
-  font-size: 11px;
-  font-weight: normal;
-  padding: 5px; }
-
-.nav-bar li:hover .hidden-middle-bar {
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column; }
 
 .fa-mobile-alt {
   font-size: 22px; }

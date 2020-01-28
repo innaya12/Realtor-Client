@@ -1,10 +1,9 @@
 .part1 {
 	background-image:url('../images/main_image.PNG');
 	background-size: cover;
+	height: 420px;
 	padding-top: 90px;
 	padding-bottom: 160px;
-	padding-right: 16px;
-	padding-left: 16px;
 	margin-bottom: 25px;
 	margin-top: 10px !important;
 }
@@ -23,7 +22,8 @@
 .part1 p {
 	font-size: 20px;
 	color: #FFFFFF;
-	margin-bottom: 28px
+	margin-top: 28px;
+	margin-bottom: 30px;
 }
 
 .menu {
@@ -38,7 +38,7 @@
 	font-size: 14px;
 	font-weight: bold;
 	padding: 6px;
-
+	border-bottom: 2px solid transparent;
 }
 
 .menu a li:hover {

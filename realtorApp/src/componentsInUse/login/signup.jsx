@@ -26,6 +26,12 @@ class Signup extends React.Component {
         });
     };
 
+    signupProcessDone(){
+        setTimeout(() => {
+            this.props.history.replace("/"); 
+        }, 4000)
+    }
+
     onCheck = async e => {
         e.preventDefault();
         const {firstName, lastName,email, password, phone} = this.state
@@ -35,7 +41,7 @@ class Signup extends React.Component {
                 valid: "notValid",
                 message: 'One or more of the inputs is invalid!'
             })
-        }else if(user.data.length === 23){
+        }else if(user.data === "all fields are required"){
             this.setState({
                 valid: "notValid",
                 message: 'All fields are required'
@@ -44,9 +50,8 @@ class Signup extends React.Component {
             this.setState({
                 user,
                 valid: "valid",
-            }, ()=>{
-                this.props.history.replace("/")
-            })
+                message: `${firstName}, you are now signed up!`
+            },this.signupProcessDone())
     
         }
     };
@@ -102,19 +107,28 @@ class Signup extends React.Component {
                                     name={"password"}
                                     style={inputStyle} onChange={this.handleChange}/>
                             </div>
-                            <button className={"col-md-4 col-md-offset-4 btn"}
-                                    style={{
-                                        backgroundColor: "#ffffff",
-                                        color: "#626a69",
-                                        fontSize: "18px",
-                                        marginTop: "15px"
-                                    }}
-                                    type={"button"} onClick={this.onCheck}> Sign Up
-                            </button>
+                            {valid === "valid" ? 
+                                <div>
                                 <p style={{color: "rgba(65, 170, 162, .9)"}}>.</p>
-                            <Link to="/login">
-                                <p className={"noUnderline"}>Registered? Log In</p>
-                            </Link>
+                                <p style={{fontSize:"18px", fontWeight:"bold"}}>{message}</p>
+                            </div>
+                            :
+                            <div>
+                                <button className={"col-md-4 col-md-offset-4 btn"}
+                                        style={{
+                                            backgroundColor: "#ffffff",
+                                            color: "#626a69",
+                                            fontSize: "18px",
+                                            marginTop: "15px"
+                                        }}
+                                        type={"button"} onClick={this.onCheck}> Sign Up
+                                </button>
+                                <p style={{color: "rgba(65, 170, 162, .9)"}}>.</p>
+                                <Link to="/login">
+                                    <p className={"noUnderline"}>Registered? Log In</p>
+                                </Link>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>

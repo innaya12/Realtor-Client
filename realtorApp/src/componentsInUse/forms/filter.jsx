@@ -21,8 +21,9 @@ class Filter extends React.Component {
         }
     };
 
+
     render() {
-        const {handleChange, cities} = this.props;
+        const {handleChange, cities, resetFunction} = this.props;
         const {countries} = this.state;
         return (
             <main className={"sticky-top navbar-light main container-fluid"} style={{backgroundColor: "white"}}>
@@ -153,6 +154,14 @@ class Filter extends React.Component {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className={"div-wrapper"}>
+                            <button onClick={resetFunction} type={"button"}  className={"btn btn-outline-secondary"}
+                            style={{
+                                backgroundColor: "white",
+                                fontSize: "14px",
+                                color: "black",
+                                border: "lightgray 1px solid"}}>Reset</button>
                         </div>
                     </div>
                 </form>

@@ -19,17 +19,13 @@ class BuildApartment extends React.Component {
         } else if (sale_status === 'both'){
             propertyType = 'Both'
         }
-
-        // console.log("propertyType", propertyType)
-
         return (
             <div className={"col-12 col-sm-6 col-lg-4 col-xl-3 img-div"}>
                 <div className={"inner-div"}>
                     <p>{property_type}</p>
                     <div className={"inner-img-div"}>
                         <Link to={`/apartment/${id}`}>
-                            <div style={style} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}
-                                 className="hereIsTheImg"/>
+                            <div style={style} className="hereIsTheImg"/>
                         </Link>
                         <p className={"green title"}>{description}</p>
                         <p className={"sale"}>{'House for ' + propertyType} </p>

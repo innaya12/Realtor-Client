@@ -6,13 +6,16 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddApartment from './componentsInUse/apartment/AddApartment';
 import Form from './componentsNotInUse/form/form'
+import GalleryPage from "./componentsInUse/pages/gallery-page"
+import HomePage from "./componentsInUse/pages/home-page";
 import Login from './componentsInUse/login/loginForm';
-import PageHome from "./componentsInUse/pages/home-page";
-import PageGallery from "./componentsInUse/pages/gallery-page"
-import Signup from './componentsInUse/login/signup'
-import SingleApartment from './componentsInUse/singleApartment/singleApartment'
-import AddApartment from './componentsInUse/apartment/AddApartment'
+import MyApartments from './componentsInUse/userPages/myapartments/MyApartments'
+import Signup from './componentsInUse/login/signup';
+import SingleApartment from './componentsInUse/singleApartment/singleApartment';
+import User from './componentsInUse/adminPages/users'
+import Apartments from './componentsInUse/adminPages/apartments'
 
 class App extends React.Component {
     render(){
@@ -21,13 +24,16 @@ class App extends React.Component {
                 <div id={"app"}>
                     <div>
                         <Switch>
-                            <Route path={"/apartment/:id"} component={SingleApartment} />
-                            <Route path={"/form"} component={Form}/>
                             <Route path={"/addapartment"} component={AddApartment}/>
+                            <Route path={"/gallery"} component={GalleryPage}/>
+                            <Route path={"/apartment/:id"} component={SingleApartment} />
+                            <Route path={"/apartments"} component={Apartments} />
+                            <Route path={"/form"} component={Form}/>
                             <Route path={"/login"} component={Login}/>  
+                            <Route path={"/myapartments/:id"} component={MyApartments}/>
                             <Route path={"/signup"} component={Signup}/>
-                            <Route path={"/apartments"} component={PageGallery}/>
-                            <Route path={"/"} component={PageHome}/>
+                            <Route path={"/users"} component={User} />
+                            <Route path={"/"} component={HomePage}/>
                         </Switch>
                     </div>
                 </div>

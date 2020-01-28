@@ -1,9 +1,9 @@
 import React from 'react';
 import Gallery from "../gallery/gallery";
-import {getApartment} from "../../data/apartments"; 
+import {getApartments} from "../../data/apartments"; 
 
 
-class PageGallery extends React.Component {
+class GalleryPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ class PageGallery extends React.Component {
     }
     async componentDidMount() {
         try{
-            const apartmentArray = await getApartment(); 
+            const apartmentArray = await getApartments(); 
             this.setState({
                 apartmentArray            
             });
@@ -33,4 +33,4 @@ class PageGallery extends React.Component {
     }
 }
 
-export default PageGallery;
+export default GalleryPage;

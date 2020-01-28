@@ -2,9 +2,9 @@ import React from 'react';
 import Home from "../home/home";
 import Footer from "../footer/footer";
 import NavBar from '../navBar/navBar'
-import {getApartment} from "../../data/apartments"; 
+import {getApartments} from "../../data/apartments"; 
 
-class PageHome extends React.Component {
+class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ class PageHome extends React.Component {
     }
     async componentDidMount() {
         try{
-            const apartmentArray = await getApartment(); 
+            const apartmentArray = await getApartments(); 
             this.setState({
                 apartmentArray            
             });
@@ -34,4 +34,4 @@ class PageHome extends React.Component {
     }
 }
 
-export default PageHome;
+export default HomePage;

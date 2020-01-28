@@ -30,7 +30,10 @@
   color: #FFFFFF;
   font-size: 14px;
   font-weight: bold;
-  padding: 6px; }
+  padding: 6px; 
+	border-bottom: 2px solid transparent;
+
+}
 
 .menu li a:hover {
   cursor: pointer;

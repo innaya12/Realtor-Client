@@ -1,5 +1,14 @@
 import fetcher from './fetcher';
 
+const getAll = async () =>{
+    try {
+        const users = await fetcher.get('/users');
+        return users
+    }catch(error){
+        console.log(error)
+    }
+}
+
 const addUserToDB = async (firstName, lastName,email, password, phone) => {
     try{
         const add = await fetcher.post('/signup', {firstName, lastName,email, password, phone});
@@ -18,7 +27,10 @@ const getUsersById = async (email, password) => {
     }
 }
 
-export {getUsersById, addUserToDB};
+export {getUsersById,
+    getAll,
+    addUserToDB
+};
 
 
 // const axios = require('axios');
