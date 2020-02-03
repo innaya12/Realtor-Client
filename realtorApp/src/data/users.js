@@ -3,7 +3,7 @@ import fetcher from './fetcher';
 const getAll = async () =>{
     try {
         const users = await fetcher.get('/users');
-        return users
+        return users.data
     }catch(error){
         console.log(error)
     }

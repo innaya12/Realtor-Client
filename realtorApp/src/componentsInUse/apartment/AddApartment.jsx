@@ -181,8 +181,6 @@ class AddApartment extends React.Component {
                                     name={"description"}
                                     style={inputStyle} onChange={this.handleChange}/>
                             </div>
-                            {/* <UploadImage handleChange={this.handleChange}  
-                                        main_image={this.state.main_image}/> */}
                             <div className={"d-flex col-4 col-md-5"} style={inputWrapper}>
                                 <input type={"file"} onChange={this.handleChange} name={"image"} style={{display:"none"}} ref={fileInput => this.fileInput = fileInput}/>
                                 <button  style={{...buttonStyle,fontSize: "17px"}} onClick={() =>this.fileInput.click()}>Main Image</button>
@@ -207,7 +205,7 @@ class AddApartment extends React.Component {
                             </button>
                             }
                         </div>
-                        <div>
+                        {/* <div> // future me - for uploading more than one image
                             <div className="container">
                                 <div className="row">
                                     <div className="col-sm-8 mt-3">
@@ -215,10 +213,7 @@ class AddApartment extends React.Component {
                                             <div className="form-group">
                                                 <label htmlFor="example-input-file"> </label>
                                                 <div className={"d-flex col-4 col-md-5"} style={inputWrapper}>
-
                                                     <input type={"file"} name={"multi-files"} style={{display:"none"}}  multiple id={"input-multi-files"} className={"form-control-file border"} ref={filesInput => this.filesInput = filesInput}/>
-                                                
-                                                    {/* <input type="file" onChange={this.handleChange} name={"image"} style={{display:"none"}} ref={filesInput => this.filesInput = filesInput}/> */}
                                                     <button  style={{...buttonStyle,fontSize: "17px"}} onClick={() =>this.filesInput.click()}>More Images</button>
                                                 </div>
                                             </div>
@@ -233,7 +228,7 @@ class AddApartment extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

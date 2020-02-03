@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import Cookies from 'js-cookie'
 import  './style/usermenu.css';
-import Apartments from '../adminPages/apartments';
 
 class AdminMenu extends React.Component {
     constructor(props) {
