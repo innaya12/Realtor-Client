@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import NavBar from '../navBar/navBar'
 import {getApartments} from '../../data/apartments'
 import './style/style.css'
@@ -27,9 +26,6 @@ class Apartments extends React.Component {
 
     render() {
         const {apartments} = this.state;
-        console.log("apartments", apartments)
-        console.log("condition", apartments)
-        const style = {backgroundImage: this.state.backgroundImage};
 
         return (                
             <div className={"container-fluid"}>

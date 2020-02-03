@@ -4,11 +4,6 @@ import {Link} from "react-router-dom";
 import  './style/usermenu.css';
 
 class UserMenu extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-   
 
     render() {
         const {user_id, logOut} = this.props;
